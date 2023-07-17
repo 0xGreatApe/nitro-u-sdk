@@ -1,5 +1,10 @@
 [
   {
+    "inputs": [],
+    "name": "IsNotWstETH",
+    "type": "error"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -10,6 +15,57 @@
       }
     ],
     "name": "ActivePoolAddressChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_assetAddress",
+        "type": "address"
+      }
+    ],
+    "name": "AssetAddressChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_newBalance",
+        "type": "uint256"
+      }
+    ],
+    "name": "AssetBalanceUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "AssetSent",
     "type": "event"
   },
   {
@@ -30,38 +86,18 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_ETH",
-        "type": "uint256"
-      }
-    ],
-    "name": "DefaultPoolETHBalanceUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_LUSDDebt",
+        "name": "_balance",
         "type": "uint256"
       }
     ],
-    "name": "DefaultPoolLUSDDebtUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "_newBalance",
-        "type": "uint256"
-      }
-    ],
-    "name": "ETHBalanceUpdated",
+    "name": "DefaultPoolAssetBalanceUpdated",
     "type": "event"
   },
   {
@@ -70,17 +106,17 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_to",
+        "name": "_asset",
         "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_amount",
+        "name": "_UDebt",
         "type": "uint256"
       }
     ],
-    "name": "EtherSent",
+    "name": "DefaultPoolUDebtUpdated",
     "type": "event"
   },
   {
@@ -88,12 +124,12 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_newBalance",
-        "type": "uint256"
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
       }
     ],
-    "name": "LUSDBalanceUpdated",
+    "name": "Initialized",
     "type": "event"
   },
   {
@@ -142,6 +178,19 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_newBalance",
+        "type": "uint256"
+      }
+    ],
+    "name": "UBalanceUpdated",
+    "type": "event"
+  },
+  {
     "inputs": [],
     "name": "NAME",
     "outputs": [
@@ -170,32 +219,30 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_amount",
         "type": "uint256"
       }
     ],
-    "name": "decreaseLUSDDebt",
+    "name": "decreaseUDebt",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getETH",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getLUSDDebt",
+    "name": "getAssetBalance",
     "outputs": [
       {
         "internalType": "uint256",
@@ -209,19 +256,43 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      }
+    ],
+    "name": "getUDebt",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_amount",
         "type": "uint256"
       }
     ],
-    "name": "increaseLUSDDebt",
+    "name": "increaseUDebt",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "isOwner",
+    "name": "isInitialized",
     "outputs": [
       {
         "internalType": "bool",
@@ -248,12 +319,55 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_amount",
         "type": "uint256"
       }
     ],
-    "name": "sendETHToActivePool",
+    "name": "receivedERC20",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "redemptionManagerAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "sendAssetToActivePool",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -267,7 +381,17 @@
       },
       {
         "internalType": "address",
+        "name": "_redemptionManagerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
         "name": "_activePoolAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_wstETHAddress",
         "type": "address"
       }
     ],
@@ -277,8 +401,34 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "troveManagerAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "wstETH",
     "outputs": [
       {
         "internalType": "address",
