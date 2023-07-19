@@ -4,44 +4,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
-      }
-    ],
-    "name": "Initialized",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "_lastGoodIndex",
-        "type": "uint256"
-      }
-    ],
-    "name": "LastGoodIndexUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
         "name": "_lastGoodPrice",
         "type": "uint256"
@@ -74,37 +36,12 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "enum IPriceFeed.Status",
+        "internalType": "enum PriceFeed.Status",
         "name": "newStatus",
         "type": "uint8"
       }
     ],
     "name": "PriceFeedStatusChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "chainLinkAggregator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tellorId",
-        "type": "uint256"
-      }
-    ],
-    "name": "RegisteredNewOracle",
     "type": "event"
   },
   {
@@ -122,12 +59,12 @@
   },
   {
     "inputs": [],
-    "name": "FLAG_ARBITRUM_SEQ_OFFLINE",
+    "name": "ETHUSD_TELLOR_REQ_ID",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "uint256",
         "name": "",
-        "type": "address"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -212,62 +149,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_chainlinkOracle",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tellorId",
-        "type": "uint256"
-      }
-    ],
-    "name": "addOracle",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "adminContract",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "chainlinkFlags",
-    "outputs": [
-      {
-        "internalType": "contract FlagsInterface",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_token",
-        "type": "address"
-      }
-    ],
     "name": "fetchPrice",
     "outputs": [
       {
@@ -281,7 +163,7 @@
   },
   {
     "inputs": [],
-    "name": "isInitialized",
+    "name": "isOwner",
     "outputs": [
       {
         "internalType": "bool",
@@ -293,13 +175,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "lastGoodPrice",
     "outputs": [
       {
@@ -325,44 +201,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "registeredOracles",
-    "outputs": [
-      {
-        "internalType": "contract AggregatorV3Interface",
-        "name": "chainLinkOracle",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "isRegistered",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tellorId",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "sequencerUptimeFeed",
+    "name": "priceAggregator",
     "outputs": [
       {
         "internalType": "contract AggregatorV3Interface",
@@ -377,17 +217,12 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_sequencerUptimeFeed",
+        "name": "_priceAggregatorAddress",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_adminContract",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_tellorCaller",
+        "name": "_tellorCallerAddress",
         "type": "address"
       }
     ],
@@ -397,24 +232,11 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_admin",
-        "type": "address"
-      }
-    ],
-    "name": "setAdminContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "status",
     "outputs": [
       {
-        "internalType": "enum IPriceFeed.Status",
+        "internalType": "enum PriceFeed.Status",
         "name": "",
         "type": "uint8"
       }
@@ -433,19 +255,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

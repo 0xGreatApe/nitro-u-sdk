@@ -1,10 +1,5 @@
 [
   {
-    "inputs": [],
-    "name": "IsNotWstETH",
-    "type": "error"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -20,25 +15,6 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
-      }
-    ],
-    "name": "Initialized",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "indexed": false,
         "internalType": "address",
@@ -58,12 +34,6 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "indexed": false,
         "internalType": "address",
@@ -149,11 +119,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_id",
         "type": "address"
       }
@@ -170,13 +135,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "data",
     "outputs": [
       {
@@ -205,11 +164,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "internalType": "uint256",
         "name": "_NICR",
@@ -243,13 +197,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "getFirst",
     "outputs": [
       {
@@ -262,13 +210,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "getLast",
     "outputs": [
       {
@@ -281,13 +223,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "getMaxSize",
     "outputs": [
       {
@@ -301,11 +237,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "internalType": "address",
         "name": "_id",
@@ -327,11 +258,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_id",
         "type": "address"
       }
@@ -348,13 +274,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "getSize",
     "outputs": [
       {
@@ -368,11 +288,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "internalType": "address",
         "name": "_id",
@@ -400,13 +315,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "isEmpty",
     "outputs": [
       {
@@ -419,13 +328,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "isFull",
     "outputs": [
       {
@@ -439,7 +342,7 @@
   },
   {
     "inputs": [],
-    "name": "isInitialized",
+    "name": "isOwner",
     "outputs": [
       {
         "internalType": "bool",
@@ -465,11 +368,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "internalType": "address",
         "name": "_id",
@@ -500,11 +398,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_id",
         "type": "address"
       }
@@ -515,14 +408,12 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_size",
+        "type": "uint256"
+      },
       {
         "internalType": "address",
         "name": "_troveManagerAddress",
@@ -532,27 +423,9 @@
         "internalType": "address",
         "name": "_borrowerOperationsAddress",
         "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_wstETHAddress",
-        "type": "address"
       }
     ],
     "name": "setParams",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -572,11 +445,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
       {
         "internalType": "uint256",
         "name": "_NICR",
@@ -599,19 +467,6 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "wstETH",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
