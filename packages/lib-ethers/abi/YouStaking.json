@@ -16,6 +16,31 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "AssetSent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
         "name": "_borrowerOperationsAddress",
@@ -29,19 +54,19 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
-        "name": "_account",
+        "name": "_asset",
         "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_amount",
+        "name": "_F_ASSET",
         "type": "uint256"
       }
     ],
-    "name": "EtherSent",
+    "name": "F_AssetUpdated",
     "type": "event"
   },
   {
@@ -50,11 +75,11 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_F_ETH",
+        "name": "_F_U",
         "type": "uint256"
       }
     ],
-    "name": "F_ETHUpdated",
+    "name": "F_UUpdated",
     "type": "event"
   },
   {
@@ -62,38 +87,12 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_F_LUSD",
-        "type": "uint256"
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
       }
     ],
-    "name": "F_LUSDUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "_lqtyTokenAddress",
-        "type": "address"
-      }
-    ],
-    "name": "LQTYTokenAddressSet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "_lusdTokenAddress",
-        "type": "address"
-      }
-    ],
-    "name": "LUSDTokenAddressSet",
+    "name": "Initialized",
     "type": "event"
   },
   {
@@ -113,6 +112,38 @@
       }
     ],
     "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "SentToTreasury",
     "type": "event"
   },
   {
@@ -146,13 +177,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_F_ETH",
+        "name": "_F_Asset",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_F_LUSD",
+        "name": "_F_U",
         "type": "uint256"
       }
     ],
@@ -169,19 +200,38 @@
         "type": "address"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "LUSDGain",
-        "type": "uint256"
+        "indexed": true,
+        "internalType": "address",
+        "name": "asset",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "ETHGain",
+        "name": "AssetGain",
         "type": "uint256"
       }
     ],
-    "name": "StakingGainsWithdrawn",
+    "name": "StakingGainsAssetWithdrawn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "staker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "UGain",
+        "type": "uint256"
+      }
+    ],
+    "name": "StakingGainsUWithdrawn",
     "type": "event"
   },
   {
@@ -190,11 +240,24 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_totalLQTYStaked",
+        "name": "_totalYOUStaked",
         "type": "uint256"
       }
     ],
-    "name": "TotalLQTYStakedUpdated",
+    "name": "TotalYOUStakedUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_treausury",
+        "type": "address"
+      }
+    ],
+    "name": "TreasuryAddressChanged",
     "type": "event"
   },
   {
@@ -211,6 +274,45 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_uTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "UTokenAddressSet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_YOUTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "YOUTokenAddressSet",
+    "type": "event"
+  },
+  {
     "inputs": [],
     "name": "DECIMAL_PRECISION",
     "outputs": [
@@ -224,8 +326,14 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "F_ETH",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "F_ASSETS",
     "outputs": [
       {
         "internalType": "uint256",
@@ -238,7 +346,7 @@
   },
   {
     "inputs": [],
-    "name": "F_LUSD",
+    "name": "F_U",
     "outputs": [
       {
         "internalType": "uint256",
@@ -292,11 +400,29 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "_treasury",
+        "type": "address"
+      }
+    ],
+    "name": "changeTreasuryAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
         "name": "_user",
         "type": "address"
       }
     ],
-    "name": "getPendingETHGain",
+    "name": "getPendingAssetGain",
     "outputs": [
       {
         "internalType": "uint256",
@@ -315,7 +441,7 @@
         "type": "address"
       }
     ],
-    "name": "getPendingLUSDGain",
+    "name": "getPendingUGain",
     "outputs": [
       {
         "internalType": "uint256",
@@ -329,12 +455,17 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_asset",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
-        "name": "_ETHFee",
+        "name": "_AssetFee",
         "type": "uint256"
       }
     ],
-    "name": "increaseF_ETH",
+    "name": "increaseF_Asset",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -343,49 +474,23 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_LUSDFee",
+        "name": "_UFee",
         "type": "uint256"
       }
     ],
-    "name": "increaseF_LUSD",
+    "name": "increaseF_U",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "isOwner",
+    "name": "isInitialized",
     "outputs": [
       {
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "lqtyToken",
-    "outputs": [
-      {
-        "internalType": "contract ILQTYToken",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "lusdToken",
-    "outputs": [
-      {
-        "internalType": "contract ILUSDToken",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -405,15 +510,61 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
-        "name": "_lqtyTokenAddress",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "sentToTreasuryTracker",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_youTokenAddress",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_lusdTokenAddress",
+        "name": "_uTokenAddress",
         "type": "address"
       },
       {
@@ -429,6 +580,11 @@
       {
         "internalType": "address",
         "name": "_activePoolAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasury",
         "type": "address"
       }
     ],
@@ -449,12 +605,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "F_ETH_Snapshot",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "F_LUSD_Snapshot",
+        "name": "F_U_Snapshot",
         "type": "uint256"
       }
     ],
@@ -465,7 +616,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_LQTYamount",
+        "name": "_YOUamount",
         "type": "uint256"
       }
     ],
@@ -495,12 +646,38 @@
   },
   {
     "inputs": [],
-    "name": "totalLQTYStaked",
+    "name": "totalYOUStaked",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "treasury",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -520,16 +697,49 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "uToken",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Upgradeable",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_LQTYamount",
+        "name": "_YOUamount",
         "type": "uint256"
       }
     ],
     "name": "unstake",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "youToken",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Upgradeable",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

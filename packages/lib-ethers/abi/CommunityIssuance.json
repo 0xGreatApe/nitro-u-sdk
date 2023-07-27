@@ -1,20 +1,15 @@
 [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "_lqtyTokenAddress",
-        "type": "address"
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
       }
     ],
-    "name": "LQTYTokenAddressSet",
+    "name": "Initialized",
     "type": "event"
   },
   {
@@ -53,13 +48,32 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "stabilityPool",
+        "type": "address"
+      },
+      {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_totalLQTYIssued",
+        "name": "_totalYOUIssued",
         "type": "uint256"
       }
     ],
-    "name": "TotalLQTYIssuedUpdated",
+    "name": "TotalYOUIssuedUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_YOUTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "YOUTokenAddressSet",
     "type": "event"
   },
   {
@@ -77,20 +91,7 @@
   },
   {
     "inputs": [],
-    "name": "ISSUANCE_FACTOR",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "LQTYSupplyCap",
+    "name": "DISTRIBUTION_DURATION",
     "outputs": [
       {
         "internalType": "uint256",
@@ -128,8 +129,14 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "deploymentTime",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "YOUSupplyCaps",
     "outputs": [
       {
         "internalType": "uint256",
@@ -141,8 +148,62 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_pool",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_assignedSupply",
+        "type": "uint256"
+      }
+    ],
+    "name": "addFundToStabilityPool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_pool",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_assignedSupply",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_spender",
+        "type": "address"
+      }
+    ],
+    "name": "addFundToStabilityPoolFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
-    "name": "isOwner",
+    "name": "adminContract",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "isInitialized",
     "outputs": [
       {
         "internalType": "bool",
@@ -155,7 +216,7 @@
   },
   {
     "inputs": [],
-    "name": "issueLQTY",
+    "name": "issueYOU",
     "outputs": [
       {
         "internalType": "uint256",
@@ -167,13 +228,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "lqtyToken",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "contract ILQTYToken",
+        "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "name": "lastUpdateTime",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -196,16 +263,23 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_account",
+        "name": "_pool",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_LQTYamount",
+        "name": "_fundToRemove",
         "type": "uint256"
       }
     ],
-    "name": "sendLQTY",
+    "name": "removeFundFromStabilityPool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -214,12 +288,35 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_lqtyTokenAddress",
+        "name": "_account",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_YOUamount",
+        "type": "uint256"
+      }
+    ],
+    "name": "sendYOU",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_youTokenAddress",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_stabilityPoolAddress",
+        "name": "_stabilityPoolManagerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_adminContract",
         "type": "address"
       }
     ],
@@ -229,11 +326,42 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "stabilityPoolAddress",
-    "outputs": [
+    "inputs": [
       {
         "internalType": "address",
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
+    "name": "setAdminContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_stabilityPool",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_weeklyReward",
+        "type": "uint256"
+      }
+    ],
+    "name": "setWeeklyYouDistribution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "stabilityPoolManager",
+    "outputs": [
+      {
+        "internalType": "contract IStabilityPoolManager",
         "name": "",
         "type": "address"
       }
@@ -242,13 +370,87 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "totalLQTYIssued",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "totalYOUIssued",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_target",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_receiver",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_quantity",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferFundToAnotherStabilityPool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "youDistributionsByPool",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "youToken",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Upgradeable",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",

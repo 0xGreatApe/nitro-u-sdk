@@ -19,7 +19,7 @@ import {
   ChickenBondManager__factory
 } from "@liquity/chicken-bonds/lusd/types";
 import type { LUSDToken } from "@liquity/lib-ethers/dist/types";
-import LUSDTokenAbi from "@liquity/lib-ethers/abi/LUSDToken.json";
+import LUSDTokenAbi from "@liquity/lib-ethers/abi/uToken.json";
 import { useContract } from "../../../hooks/useContract";
 import { useLiquity } from "../../../hooks/LiquityContext";
 import { useCallback } from "react";
