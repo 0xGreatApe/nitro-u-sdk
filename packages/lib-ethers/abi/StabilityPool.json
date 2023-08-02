@@ -168,6 +168,19 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isPreYOU",
+        "type": "bool"
+      }
+    ],
+    "name": "IsPreYOUToggled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "previousOwner",
@@ -330,6 +343,25 @@
       {
         "indexed": false,
         "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "U",
+        "type": "uint256"
+      }
+    ],
+    "name": "UPaidToDepositorPreYOU",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
         "name": "_newUTokenAddress",
         "type": "address"
       }
@@ -461,6 +493,19 @@
         "internalType": "bytes32",
         "name": "",
         "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "YOUExchangeRate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -818,6 +863,19 @@
   },
   {
     "inputs": [],
+    "name": "isPreYOU",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "lastAssetError_Offset",
     "outputs": [
       {
@@ -960,6 +1018,11 @@
         "internalType": "address",
         "name": "_vestaParamsAddress",
         "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_YOUExchangeRate",
+        "type": "uint256"
       }
     ],
     "name": "setAddresses",
@@ -1024,6 +1087,13 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "togglePreYOU",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
