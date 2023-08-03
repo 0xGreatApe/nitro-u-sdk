@@ -65,12 +65,13 @@ const convertToDate = (timestamp: number) => new Date(timestamp * 1000);
 const validSortingOptions = ["ascendingCollateralRatio", "descendingCollateralRatio"];
 
 const expectPositiveInt = <K extends string>(obj: { [P in K]?: number }, key: K) => {
-  if (obj[key] !== undefined) {
-    if (!Number.isInteger(obj[key])) {
+  const value = obj[key];
+  if (value !== undefined) {
+    if (!Number.isInteger(value)) {
       throw new Error(`${key} must be an integer`);
     }
 
-    if (obj[key] < 0) {
+    if (value < 0) {
       throw new Error(`${key} must not be negative`);
     }
   }
@@ -151,8 +152,8 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     const { troveManager } = _getContracts(this.connection);
 
     const [collateral, debt] = await Promise.all([
-      troveManager.L_ETH({ ...overrides }).then(decimalify),
-      troveManager.L_LUSDDebt({ ...overrides }).then(decimalify)
+      troveManager.L_ASSETS({ ...overrides }).then(decimalify),
+      troveManager.L_UDebts({ ...overrides }).then(decimalify)
     ]);
 
     return new Trove(collateral, debt);
@@ -215,8 +216,8 @@ export class ReadableEthersLiquity implements ReadableLiquity {
 
     const [activeCollateral, activeDebt] = await Promise.all(
       [
-        activePool.getETH({ ...overrides }),
-        activePool.getLUSDDebt({ ...overrides })
+        activePool.getAssetBalance({ ...overrides }),
+        activePool.getUDebt({ ...overrides })
       ].map(getBigNumber => getBigNumber.then(decimalify))
     );
 
@@ -229,8 +230,8 @@ export class ReadableEthersLiquity implements ReadableLiquity {
 
     const [liquidatedCollateral, closedDebt] = await Promise.all(
       [
-        defaultPool.getETH({ ...overrides }),
-        defaultPool.getLUSDDebt({ ...overrides })
+        defaultPool.getAssetBalance({ ...overrides }),
+        defaultPool.getUDebt({ ...overrides })
       ].map(getBigNumber => getBigNumber.then(decimalify))
     );
 
@@ -255,14 +256,9 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     address ??= _requireAddress(this.connection);
     const { stabilityPool } = _getContracts(this.connection);
 
-    const [
-      { frontEndTag, initialValue },
-      currentLUSD,
-      collateralGain,
-      lqtyReward
-    ] = await Promise.all([
+    const [initialValue, currentLUSD, collateralGain, lqtyReward] = await Promise.all([
       stabilityPool.deposits(address, { ...overrides }),
-      stabilityPool.getCompoundedLUSDDeposit(address, { ...overrides }),
+      stabilityPool.getCompoundedUDeposit(address, { ...overrides }),
       stabilityPool.getDepositorAssetGain(address, { ...overrides }),
       stabilityPool.getDepositorYOUGain(address, { ...overrides })
     ]);
@@ -271,8 +267,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
       decimalify(initialValue),
       decimalify(currentLUSD),
       decimalify(collateralGain),
-      decimalify(lqtyReward),
-      frontEndTag
+      decimalify(lqtyReward)
     );
   }
 
@@ -291,7 +286,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
   getLUSDInStabilityPool(overrides?: EthersCallOverrides): Promise<Decimal> {
     const { stabilityPool } = _getContracts(this.connection);
 
-    return stabilityPool.getTotalLUSDDeposits({ ...overrides }).then(decimalify);
+    return stabilityPool.getTotalUDeposits({ ...overrides }).then(decimalify);
   }
 
   /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getLUSDBalance} */
@@ -310,21 +305,21 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return lqtyToken.balanceOf(address, { ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getUniTokenBalance} */
-  getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    address ??= _requireAddress(this.connection);
-    const { uniToken } = _getContracts(this.connection);
+  // /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getUniTokenBalance} */
+  // getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   address ??= _requireAddress(this.connection);
+  //   const { uniToken } = _getContracts(this.connection);
 
-    return uniToken.balanceOf(address, { ...overrides }).then(decimalify);
-  }
+  //   return uniToken.balanceOf(address, { ...overrides }).then(decimalify);
+  // }
 
   /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getUniTokenAllowance} */
-  getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    address ??= _requireAddress(this.connection);
-    const { uniToken, unipool } = _getContracts(this.connection);
+  // getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   address ??= _requireAddress(this.connection);
+  //   const { uniToken, unipool } = _getContracts(this.connection);
 
-    return uniToken.allowance(address, unipool.address, { ...overrides }).then(decimalify);
-  }
+  //   return uniToken.allowance(address, unipool.address, { ...overrides }).then(decimalify);
+  // }
 
   /** @internal */
   async _getRemainingLiquidityMiningLQTYRewardCalculator(
@@ -493,19 +488,19 @@ export class ReadableEthersLiquity implements ReadableLiquity {
   }
 
   /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getFrontendStatus} */
-  async getFrontendStatus(
-    address?: string,
-    overrides?: EthersCallOverrides
-  ): Promise<FrontendStatus> {
-    address ??= _requireFrontendAddress(this.connection);
-    const { stabilityPool } = _getContracts(this.connection);
+  // async getFrontendStatus(
+  //   address?: string,
+  //   overrides?: EthersCallOverrides
+  // ): Promise<FrontendStatus> {
+  //   address ??= _requireFrontendAddress(this.connection);
+  //   const { stabilityPool } = _getContracts(this.connection);
 
-    const { registered, kickbackRate } = await stabilityPool.frontEnds(address, { ...overrides });
+  //   const { registered, kickbackRate } = await stabilityPool.frontEnds(address, { ...overrides });
 
-    return registered
-      ? { status: "registered", kickbackRate: decimalify(kickbackRate) }
-      : { status: "unregistered" };
-  }
+  //   return registered
+  //     ? { status: "registered", kickbackRate: decimalify(kickbackRate) }
+  //     : { status: "unregistered" };
+  // }
 }
 
 type Resolved<T> = T extends Promise<infer U> ? U : T;
@@ -644,17 +639,17 @@ class _BlockPolledReadableEthersLiquity
       : this._readable.getLQTYBalance(address, overrides);
   }
 
-  async getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    return this._userHit(address, overrides)
-      ? this.store.state.uniTokenBalance
-      : this._readable.getUniTokenBalance(address, overrides);
-  }
+  // async getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   return this._userHit(address, overrides)
+  //     ? this.store.state.uniTokenBalance
+  //     : this._readable.getUniTokenBalance(address, overrides);
+  // }
 
-  async getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    return this._userHit(address, overrides)
-      ? this.store.state.uniTokenAllowance
-      : this._readable.getUniTokenAllowance(address, overrides);
-  }
+  // async getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   return this._userHit(address, overrides)
+  //     ? this.store.state.uniTokenAllowance
+  //     : this._readable.getUniTokenAllowance(address, overrides);
+  // }
 
   async getRemainingLiquidityMiningLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._blockHit(overrides)
@@ -725,14 +720,14 @@ class _BlockPolledReadableEthersLiquity
       : this._readable.getTotalStakedLQTY(overrides);
   }
 
-  async getFrontendStatus(
-    address?: string,
-    overrides?: EthersCallOverrides
-  ): Promise<FrontendStatus> {
-    return this._frontendHit(address, overrides)
-      ? this.store.state.frontend
-      : this._readable.getFrontendStatus(address, overrides);
-  }
+  // async getFrontendStatus(
+  //   address?: string,
+  //   overrides?: EthersCallOverrides
+  // ): Promise<FrontendStatus> {
+  //   return this._frontendHit(address, overrides)
+  //     ? this.store.state.frontend
+  //     : this._readable.getFrontendStatus(address, overrides);
+  // }
 
   getTroves(
     params: TroveListingParams & { beforeRedistribution: true },

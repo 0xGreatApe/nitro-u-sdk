@@ -9,6 +9,8 @@ import kovan from "../deployments/kovan.json";
 import rinkeby from "../deployments/rinkeby.json";
 import ropsten from "../deployments/ropsten.json";
 import mainnet from "../deployments/mainnet.json";
+import arbitrum from "../deployments/arbitrum.json";
+import arbitrumGoerli from "../deployments/arbitrumGoerli.json";
 import kiln from "../deployments/kiln.json";
 
 import { numberify, panic } from "./_utils";
@@ -32,6 +34,8 @@ const deployments: {
   [ropsten.chainId]: ropsten,
   [rinkeby.chainId]: rinkeby,
   [goerli.chainId]: goerli,
+  [arbitrum.chainId]: arbitrum,
+  [arbitrumGoerli.chainId]: arbitrumGoerli,
   [kovan.chainId]: kovan,
   [kiln.chainId]: kiln,
 
