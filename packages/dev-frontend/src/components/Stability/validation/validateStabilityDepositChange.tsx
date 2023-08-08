@@ -13,12 +13,12 @@ import { StabilityActionDescription } from "../StabilityActionDescription";
 export const selectForStabilityDepositChangeValidation = ({
   trove,
   lusdBalance,
-  ownFrontend,
+  //ownFrontend,
   haveUndercollateralizedTroves
 }: LiquityStoreState) => ({
   trove,
   lusdBalance,
-  haveOwnFrontend: ownFrontend.status === "registered",
+  //haveOwnFrontend: ownFrontend.status === "registered",
   haveUndercollateralizedTroves
 });
 
@@ -31,7 +31,7 @@ export const validateStabilityDepositChange = (
   editedLUSD: Decimal,
   {
     lusdBalance,
-    haveOwnFrontend,
+    //haveOwnFrontend,
     haveUndercollateralizedTroves
   }: StabilityDepositChangeValidationContext
 ): [
@@ -40,14 +40,14 @@ export const validateStabilityDepositChange = (
 ] => {
   const change = originalDeposit.whatChanged(editedLUSD);
 
-  if (haveOwnFrontend) {
-    return [
-      undefined,
-      <ErrorDescription>
-        You can’t deposit using a wallet address that is registered as a frontend.
-      </ErrorDescription>
-    ];
-  }
+  // if (haveOwnFrontend) {
+  //   return [
+  //     undefined,
+  //     <ErrorDescription>
+  //       You can’t deposit using a wallet address that is registered as a frontend.
+  //     </ErrorDescription>
+  //   ];
+  // }
 
   if (!change) {
     return [undefined, undefined];

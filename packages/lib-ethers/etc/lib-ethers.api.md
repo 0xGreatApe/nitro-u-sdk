@@ -12,7 +12,7 @@ import { Decimalish } from '@liquity/lib-base';
 import { ErrorCode } from '@ethersproject/logger';
 import { FailedReceipt } from '@liquity/lib-base';
 import { Fees } from '@liquity/lib-base';
-import { FrontendStatus } from '@liquity/lib-base';
+//import { FrontendStatus } from '@liquity/lib-base';
 import { LiquidationDetails } from '@liquity/lib-base';
 import { LiquityReceipt } from '@liquity/lib-base';
 import { LiquityStore } from '@liquity/lib-base';
@@ -136,7 +136,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     // @internal (undocumented)
     _getFeesFactory(overrides?: EthersCallOverrides): Promise<(blockTimestamp: number, recoveryMode: boolean) => Fees>;
     // (undocumented)
-    getFrontendStatus(address?: string, overrides?: EthersCallOverrides): Promise<FrontendStatus>;
+    // getFrontendStatus(address?: string, overrides?: EthersCallOverrides): Promise<FrontendStatus>;
     // (undocumented)
     getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
     // (undocumented)
@@ -471,7 +471,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     // @internal (undocumented)
     _getFeesFactory(overrides?: EthersCallOverrides): Promise<(blockTimestamp: number, recoveryMode: boolean) => Fees>;
     // (undocumented)
-    getFrontendStatus(address?: string, overrides?: EthersCallOverrides): Promise<FrontendStatus>;
+    // getFrontendStatus(address?: string, overrides?: EthersCallOverrides): Promise<FrontendStatus>;
     // (undocumented)
     getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
     // (undocumented)

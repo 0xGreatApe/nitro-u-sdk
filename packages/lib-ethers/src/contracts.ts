@@ -15,11 +15,11 @@ import {
 import activePoolAbi from "../abi/ActivePool.json";
 import borrowerOperationsAbi from "../abi/BorrowerOperations.json";
 import troveManagerAbi from "../abi/TroveManager.json";
-import lusdTokenAbi from "../abi/uToken.json";
+import uTokenAbi from "../abi/uToken.json";
 import collSurplusPoolAbi from "../abi/CollSurplusPool.json";
 import communityIssuanceAbi from "../abi/CommunityIssuance.json";
 import defaultPoolAbi from "../abi/DefaultPool.json";
-import uTokenAbi from "../abi/uToken.json";
+import youTokenAbi from "../abi/youToken.json";
 import hintHelpersAbi from "../abi/HintHelpers.json";
 import lockupContractFactoryAbi from "../abi/LockupContractFactory.json";
 import youStakingAbi from "../abi/YOUStaking.json";
@@ -168,14 +168,14 @@ export interface _LiquityContracts {
   activePool: ActivePool;
   borrowerOperations: BorrowerOperations;
   troveManager: TroveManager;
-  lusdToken: UToken;
+  uToken: UToken;
   collSurplusPool: CollSurplusPool;
   communityIssuance: CommunityIssuance;
   defaultPool: DefaultPool;
-  lqtyToken: YOUToken;
+  youToken: YOUToken;
   hintHelpers: HintHelpers;
   lockupContractFactory: LockupContractFactory;
-  lqtyStaking: YOUStaking;
+  youStaking: YOUStaking;
   multiTroveGetter: MultiTroveGetter;
   priceFeed: PriceFeed | PriceFeedTestnet;
   sortedTroves: SortedTroves;
@@ -205,13 +205,13 @@ const getAbi = (priceFeedIsTestnet: boolean, uniTokenIsMock: boolean): LiquityCo
   activePool: activePoolAbi,
   borrowerOperations: borrowerOperationsAbi,
   troveManager: troveManagerAbi,
-  lusdToken: lusdTokenAbi,
+  uToken: uTokenAbi,
   communityIssuance: communityIssuanceAbi,
   defaultPool: defaultPoolAbi,
-  lqtyToken: uTokenAbi,
+  youToken: youTokenAbi,
   hintHelpers: hintHelpersAbi,
   lockupContractFactory: lockupContractFactoryAbi,
-  lqtyStaking: youStakingAbi,
+  youStaking: youStakingAbi,
   multiTroveGetter: multiTroveGetterAbi,
   priceFeed: priceFeedIsTestnet ? priceFeedTestnetAbi : priceFeedAbi,
   sortedTroves: sortedTrovesAbi,

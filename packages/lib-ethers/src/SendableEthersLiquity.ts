@@ -220,12 +220,12 @@ export class SendableEthersLiquity
   }
 
   /** {@inheritDoc @liquity/lib-base#SendableLiquity.registerFrontend} */
-  registerFrontend(
-    kickbackRate: Decimalish,
-    overrides?: EthersTransactionOverrides
-  ): Promise<SentEthersLiquityTransaction<void>> {
-    return this._populate.registerFrontend(kickbackRate, overrides).then(sendTransaction);
-  }
+  // registerFrontend(
+  //   kickbackRate: Decimalish,
+  //   overrides?: EthersTransactionOverrides
+  // ): Promise<SentEthersLiquityTransaction<void>> {
+  //   return this._populate.registerFrontend(kickbackRate, overrides).then(sendTransaction);
+  // }
 
   /** @internal */
   _mintUniToken(
@@ -237,28 +237,28 @@ export class SendableEthersLiquity
   }
 
   /** {@inheritDoc @liquity/lib-base#SendableLiquity.approveUniTokens} */
-  approveUniTokens(
-    allowance?: Decimalish,
-    overrides?: EthersTransactionOverrides
-  ): Promise<SentEthersLiquityTransaction<void>> {
-    return this._populate.approveUniTokens(allowance, overrides).then(sendTransaction);
-  }
+  // approveUniTokens(
+  //   allowance?: Decimalish,
+  //   overrides?: EthersTransactionOverrides
+  // ): Promise<SentEthersLiquityTransaction<void>> {
+  //   return this._populate.approveUniTokens(allowance, overrides).then(sendTransaction);
+  // }
 
   /** {@inheritDoc @liquity/lib-base#SendableLiquity.stakeUniTokens} */
-  stakeUniTokens(
-    amount: Decimalish,
-    overrides?: EthersTransactionOverrides
-  ): Promise<SentEthersLiquityTransaction<void>> {
-    return this._populate.stakeUniTokens(amount, overrides).then(sendTransaction);
-  }
+  // stakeUniTokens(
+  //   amount: Decimalish,
+  //   overrides?: EthersTransactionOverrides
+  // ): Promise<SentEthersLiquityTransaction<void>> {
+  //   return this._populate.stakeUniTokens(amount, overrides).then(sendTransaction);
+  // }
 
   /** {@inheritDoc @liquity/lib-base#SendableLiquity.unstakeUniTokens} */
-  unstakeUniTokens(
-    amount: Decimalish,
-    overrides?: EthersTransactionOverrides
-  ): Promise<SentEthersLiquityTransaction<void>> {
-    return this._populate.unstakeUniTokens(amount, overrides).then(sendTransaction);
-  }
+  // unstakeUniTokens(
+  //   amount: Decimalish,
+  //   overrides?: EthersTransactionOverrides
+  // ): Promise<SentEthersLiquityTransaction<void>> {
+  //   return this._populate.unstakeUniTokens(amount, overrides).then(sendTransaction);
+  // }
 
   /** {@inheritDoc @liquity/lib-base#SendableLiquity.withdrawLQTYRewardFromLiquidityMining} */
   withdrawLQTYRewardFromLiquidityMining(

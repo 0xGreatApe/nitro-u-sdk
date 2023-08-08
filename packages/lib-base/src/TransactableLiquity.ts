@@ -472,7 +472,7 @@ export interface TransactableLiquity {
    * @throws
    * Throws {@link TransactionFailedError} in case of transaction failure.
    */
-  approveUniTokens(allowance?: Decimalish): Promise<void>;
+  // approveUniTokens(allowance?: Decimalish): Promise<void>;
 
   /**
    * Stake Uniswap ETH/LUSD LP tokens to participate in liquidity mining and earn LQTY.
@@ -482,7 +482,7 @@ export interface TransactableLiquity {
    * @throws
    * Throws {@link TransactionFailedError} in case of transaction failure.
    */
-  stakeUniTokens(amount: Decimalish): Promise<void>;
+  // stakeUniTokens(amount: Decimalish): Promise<void>;
 
   /**
    * Withdraw Uniswap ETH/LUSD LP tokens from liquidity mining.
@@ -492,7 +492,7 @@ export interface TransactableLiquity {
    * @throws
    * Throws {@link TransactionFailedError} in case of transaction failure.
    */
-  unstakeUniTokens(amount: Decimalish): Promise<void>;
+  // unstakeUniTokens(amount: Decimalish): Promise<void>;
 
   /**
    * Withdraw LQTY that has been earned by mining liquidity.
@@ -519,5 +519,5 @@ export interface TransactableLiquity {
    * @throws
    * Throws {@link TransactionFailedError} in case of transaction failure.
    */
-  registerFrontend(kickbackRate: Decimalish): Promise<void>;
+  // registerFrontend(kickbackRate: Decimalish): Promise<void>;
 }

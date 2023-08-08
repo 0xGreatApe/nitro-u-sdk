@@ -87,7 +87,7 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
   private async _get(
     blockTag?: number
   ): Promise<[baseState: LiquityStoreBaseState, extraState: BlockPolledLiquityStoreExtraState]> {
-    const { userAddress, frontendTag } = this.connection;
+    const { userAddress } = this.connection;
 
     const {
       blockTimestamp,
@@ -108,22 +108,22 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
       lusdInStabilityPool: this._readable.getLUSDInStabilityPool({ blockTag }),
       totalStakedLQTY: this._readable.getTotalStakedLQTY({ blockTag }),
       _riskiestTroveBeforeRedistribution: this._getRiskiestTroveBeforeRedistribution({ blockTag }),
-      totalStakedUniTokens: this._readable.getTotalStakedUniTokens({ blockTag }),
+      //      totalStakedUniTokens: this._readable.getTotalStakedUniTokens({ blockTag }),
       remainingStabilityPoolLQTYReward: this._readable.getRemainingStabilityPoolLQTYReward({
         blockTag
       }),
 
-      frontend: frontendTag
-        ? this._readable.getFrontendStatus(frontendTag, { blockTag })
-        : { status: "unregistered" as const },
+      // frontend: frontendTag
+      //   ? this._readable.getFrontendStatus(frontendTag, { blockTag })
+      //   : { status: "unregistered" as const },
 
       ...(userAddress
         ? {
             accountBalance: this._provider.getBalance(userAddress, blockTag).then(decimalify),
             lusdBalance: this._readable.getLUSDBalance(userAddress, { blockTag }),
             lqtyBalance: this._readable.getLQTYBalance(userAddress, { blockTag }),
-            uniTokenBalance: this._readable.getUniTokenBalance(userAddress, { blockTag }),
-            uniTokenAllowance: this._readable.getUniTokenAllowance(userAddress, { blockTag }),
+            //    uniTokenBalance: this._readable.getUniTokenBalance(userAddress, { blockTag }),
+            //    uniTokenAllowance: this._readable.getUniTokenAllowance(userAddress, { blockTag }),
             liquidityMiningStake: this._readable.getLiquidityMiningStake(userAddress, { blockTag }),
             liquidityMiningLQTYReward: this._readable.getLiquidityMiningLQTYReward(userAddress, {
               blockTag
@@ -135,8 +135,8 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
               blockTag
             }),
             stabilityDeposit: this._readable.getStabilityDeposit(userAddress, { blockTag }),
-            lqtyStake: this._readable.getLQTYStake(userAddress, { blockTag }),
-            ownFrontend: this._readable.getFrontendStatus(userAddress, { blockTag })
+            lqtyStake: this._readable.getLQTYStake(userAddress, { blockTag })
+            //     ownFrontend: this._readable.getFrontendStatus(userAddress, { blockTag })
           }
         : {
             accountBalance: Decimal.ZERO,
@@ -155,11 +155,11 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
               Decimal.ZERO,
               Decimal.ZERO,
               Decimal.ZERO,
-              Decimal.ZERO,
-              AddressZero
+              Decimal.ZERO
+              //         AddressZero
             ),
-            lqtyStake: new LQTYStake(),
-            ownFrontend: { status: "unregistered" as const }
+            lqtyStake: new LQTYStake()
+            //       ownFrontend: { status: "unregistered" as const }
           })
     });
 

@@ -10,7 +10,7 @@
     {
       "anonymous": false,
       "inputs": [
-        {
+        { 
           "indexed": false,
           "internalType": "address",
           "name": "_newActivePoolAddress",

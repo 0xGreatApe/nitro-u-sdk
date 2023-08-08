@@ -3,7 +3,7 @@ import { Fees } from "./Fees";
 import { LQTYStake } from "./LQTYStake";
 import { StabilityDeposit } from "./StabilityDeposit";
 import { Trove, TroveWithPendingRedistribution, UserTrove } from "./Trove";
-import { FrontendStatus, ReadableLiquity, TroveListingParams } from "./ReadableLiquity";
+import { ReadableLiquity, TroveListingParams } from "./ReadableLiquity";
 
 /** @internal */
 export type _ReadableLiquityWithExtraParamsBase<T extends unknown[]> = {
@@ -129,19 +129,19 @@ export class _CachedReadableLiquity<T extends unknown[]>
     );
   }
 
-  async getUniTokenBalance(address?: string, ...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getUniTokenBalance(address, ...extraParams) ??
-      this._readable.getUniTokenBalance(address, ...extraParams)
-    );
-  }
+  // async getUniTokenBalance(address?: string, ...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getUniTokenBalance(address, ...extraParams) ??
+  //     this._readable.getUniTokenBalance(address, ...extraParams)
+  //   );
+  // }
 
-  async getUniTokenAllowance(address?: string, ...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getUniTokenAllowance(address, ...extraParams) ??
-      this._readable.getUniTokenAllowance(address, ...extraParams)
-    );
-  }
+  // async getUniTokenAllowance(address?: string, ...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getUniTokenAllowance(address, ...extraParams) ??
+  //     this._readable.getUniTokenAllowance(address, ...extraParams)
+  //   );
+  // }
 
   async getRemainingLiquidityMiningLQTYReward(...extraParams: T): Promise<Decimal> {
     return (
@@ -157,12 +157,12 @@ export class _CachedReadableLiquity<T extends unknown[]>
     );
   }
 
-  async getTotalStakedUniTokens(...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getTotalStakedUniTokens(...extraParams) ??
-      this._readable.getTotalStakedUniTokens(...extraParams)
-    );
-  }
+  // async getTotalStakedUniTokens(...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getTotalStakedUniTokens(...extraParams) ??
+  //     this._readable.getTotalStakedUniTokens(...extraParams)
+  //   );
+  // }
 
   async getLiquidityMiningLQTYReward(address?: string, ...extraParams: T): Promise<Decimal> {
     return (
@@ -219,10 +219,10 @@ export class _CachedReadableLiquity<T extends unknown[]>
     );
   }
 
-  async getFrontendStatus(address?: string, ...extraParams: T): Promise<FrontendStatus> {
-    return (
-      this._cache.getFrontendStatus(address, ...extraParams) ??
-      this._readable.getFrontendStatus(address, ...extraParams)
-    );
-  }
+  // async getFrontendStatus(address?: string, ...extraParams: T): Promise<FrontendStatus> {
+  //   return (
+  //     this._cache.getFrontendStatus(address, ...extraParams) ??
+  //     this._readable.getFrontendStatus(address, ...extraParams)
+  //   );
+  // }
 }

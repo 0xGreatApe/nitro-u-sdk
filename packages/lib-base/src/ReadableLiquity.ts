@@ -15,9 +15,9 @@ import { LQTYStake } from "./LQTYStake";
  *
  * @public
  */
-export type FrontendStatus =
-  | { status: "unregistered" }
-  | { status: "registered"; kickbackRate: Decimal };
+// export type FrontendStatus =
+//   | { status: "unregistered" }
+//   | { status: "registered"; kickbackRate: Decimal };
 
 /**
  * Parameters of the {@link ReadableLiquity.(getTroves:2) | getTroves()} function.
@@ -154,7 +154,7 @@ export interface ReadableLiquity {
   /**
    * Get the total amount of Uniswap ETH/LUSD LP tokens currently staked in liquidity mining.
    */
-  getTotalStakedUniTokens(): Promise<Decimal>;
+  // getTotalStakedUniTokens(): Promise<Decimal>;
 
   /**
    * Get the amount of LQTY earned by an address through mining liquidity.

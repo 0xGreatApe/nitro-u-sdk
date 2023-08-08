@@ -87,7 +87,7 @@ const deployContracts = async (
       "LockupContractFactory",
       { ...overrides }
     ),
-    lqtyStaking: await deployContract(deployer, getContractFactory, "LQTYStaking", { ...overrides }),
+    youStaking: await deployContract(deployer, getContractFactory, "youStaking", { ...overrides }),
     priceFeed: await deployContract(
       deployer,
       getContractFactory,
@@ -109,22 +109,22 @@ const deployContracts = async (
   return [
     {
       ...addresses,
-      lusdToken: await deployContract(
+      uToken: await deployContract(
         deployer,
         getContractFactory,
-        "LUSDToken",
+        "uToken",
         addresses.troveManager,
         addresses.stabilityPool,
         addresses.borrowerOperations,
         { ...overrides }
       ),
 
-      lqtyToken: await deployContract(
+      youToken: await deployContract(
         deployer,
         getContractFactory,
-        "LQTYToken",
+        "YOUToken",
         addresses.communityIssuance,
-        addresses.lqtyStaking,
+        addresses.youStaking,
         addresses.lockupContractFactory,
         Wallet.createRandom().address, // _bountyAddress (TODO: parameterize this)
         addresses.unipool, // _lpRewardsAddress
@@ -159,14 +159,14 @@ const connectContracts = async (
     activePool,
     borrowerOperations,
     troveManager,
-    lusdToken,
+    uToken,
     collSurplusPool,
     communityIssuance,
     defaultPool,
-    lqtyToken,
+    youToken,
     hintHelpers,
     lockupContractFactory,
-    lqtyStaking,
+    youStaking,
     priceFeed,
     sortedTroves,
     stabilityPool,
@@ -199,10 +199,10 @@ const connectContracts = async (
         gasPool.address,
         collSurplusPool.address,
         priceFeed.address,
-        lusdToken.address,
+        uToken.address,
         sortedTroves.address,
-        lqtyToken.address,
-        lqtyStaking.address,
+        youToken.address,
+        youStaking.address,
         { ...overrides, nonce }
       ),
 
@@ -216,8 +216,8 @@ const connectContracts = async (
         collSurplusPool.address,
         priceFeed.address,
         sortedTroves.address,
-        lusdToken.address,
-        lqtyStaking.address,
+        uToken.address,
+        youStaking.address,
         { ...overrides, nonce }
       ),
 
@@ -226,7 +226,7 @@ const connectContracts = async (
         borrowerOperations.address,
         troveManager.address,
         activePool.address,
-        lusdToken.address,
+        uToken.address,
         sortedTroves.address,
         priceFeed.address,
         communityIssuance.address,
@@ -263,9 +263,9 @@ const connectContracts = async (
       }),
 
     nonce =>
-      lqtyStaking.setAddresses(
-        lqtyToken.address,
-        lusdToken.address,
+      youStaking.setAddresses(
+        youToken.address,
+        uToken.address,
         troveManager.address,
         borrowerOperations.address,
         activePool.address,
@@ -273,19 +273,19 @@ const connectContracts = async (
       ),
 
     nonce =>
-      lockupContractFactory.setLQTYTokenAddress(lqtyToken.address, {
+      lockupContractFactory.setyouTokenAddress(youToken.address, {
         ...overrides,
         nonce
       }),
 
     nonce =>
-      communityIssuance.setAddresses(lqtyToken.address, stabilityPool.address, {
+      communityIssuance.setAddresses(youToken.address, stabilityPool.address, {
         ...overrides,
         nonce
       }),
 
     nonce =>
-      unipool.setParams(lqtyToken.address, uniToken.address, 2 * 30 * 24 * 60 * 60, {
+      unipool.setParams(youToken.address, uniToken.address, 2 * 30 * 24 * 60 * 60, {
         ...overrides,
         nonce
       })
@@ -347,7 +347,7 @@ export const deployAndSetupContracts = async (
           ...addresses,
 
           uniToken: await (wethAddress
-            ? createUniswapV2Pair(deployer, wethAddress, addresses.lusdToken, overrides)
+            ? createUniswapV2Pair(deployer, wethAddress, addresses.uToken, overrides)
             : deployMockUniToken(deployer, getContractFactory, overrides))
         }
       })
@@ -359,14 +359,14 @@ export const deployAndSetupContracts = async (
   log("Connecting contracts...");
   await connectContracts(contracts, deployer, overrides);
 
-  const lqtyTokenDeploymentTime = await contracts.lqtyToken.getDeploymentStartTime();
+  const youTokenDeploymentTime = await contracts.youToken.getDeploymentStartTime();
   const bootstrapPeriod = await contracts.troveManager.BOOTSTRAP_PERIOD();
   const totalStabilityPoolLQTYReward = await contracts.communityIssuance.LQTYSupplyCap();
   const liquidityMiningLQTYRewardRate = await contracts.unipool.rewardRate();
 
   return {
     ...deployment,
-    deploymentDate: lqtyTokenDeploymentTime.toNumber() * 1000,
+    deploymentDate: youTokenDeploymentTime.toNumber() * 1000,
     bootstrapPeriod: bootstrapPeriod.toNumber(),
     totalStabilityPoolLQTYReward: `${Decimal.fromBigNumberString(
       totalStabilityPoolLQTYReward.toHexString()
