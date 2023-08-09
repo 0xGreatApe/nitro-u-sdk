@@ -153,15 +153,24 @@ export interface _RawTransactionReplacedError extends Error {
   receipt: EthersTransactionReceipt;
 }
 
-const hasProp = <T extends object, P extends string>(o: T, p: P): o is T & { [_ in P]: unknown } => p in o;
+const isRecord = (obj: unknown): obj is Record<string, unknown> => {
+  return typeof obj === "object" && obj !== null;
+};
+
+const hasProp = <T extends Record<string, unknown>, P extends string>(
+  o: T,
+  p: P
+): o is T & { [_ in P]: unknown } => p in o;
 
 const isTransactionFailedError = (error: Error): error is RawTransactionFailedError =>
+  isRecord(error) &&
   hasProp(error, "code") &&
   error.code === ErrorCode.CALL_EXCEPTION &&
   hasProp(error, "reason") &&
   error.reason === _RawErrorReason.TRANSACTION_FAILED;
 
 const isTransactionReplacedError = (error: Error): error is _RawTransactionReplacedError =>
+  isRecord(error) &&
   hasProp(error, "code") &&
   error.code === ErrorCode.TRANSACTION_REPLACED &&
   hasProp(error, "reason") &&
@@ -649,6 +658,7 @@ export class PopulatableEthersLiquity
     rawPopulatedTransaction: EthersPopulatedTransaction
   ): Promise<PopulatedEthersLiquityTransaction<StabilityDepositChangeDetails>> {
     const { stabilityPool, uToken } = _getContracts(this._readable.connection);
+    const stabilityPoolAddress = this._readable.connection.addresses.stabilityPool;
 
     return new PopulatedEthersLiquityTransaction(
       rawPopulatedTransaction,
@@ -659,7 +669,7 @@ export class PopulatableEthersLiquity
 
         const [withdrawLUSD] = uToken
           .extractEvents(logs, "Transfer")
-          .filter(({ args: { from, to } }) => from === stabilityPool.address && to === userAddress)
+          .filter(({ args: { from, to } }) => from === stabilityPoolAddress && to === userAddress)
           .map(({ args: { value } }) => decimalify(value));
 
         return {
@@ -702,13 +712,13 @@ export class PopulatableEthersLiquity
   ): Promise<[string, string]> {
     const { sortedTroves, hintHelpers } = _getContracts(this._readable.connection);
     const numberOfTroves = await this._readable.getNumberOfTroves();
-
+    const _asset = await sortedTroves.wstETH();
     if (!numberOfTroves) {
       return [AddressZero, AddressZero];
     }
 
     if (nominalCollateralRatio.infinite) {
-      return [AddressZero, await sortedTroves.getFirst()];
+      return [AddressZero, await sortedTroves.getFirst(_asset)];
     }
 
     const totalNumberOfTrials = Math.ceil(10 * Math.sqrt(numberOfTroves));
@@ -725,7 +735,7 @@ export class PopulatableEthersLiquity
       numberOfTrials: number
     ) =>
       hintHelpers
-        .getApproxHint(nominalCollateralRatio.hex, numberOfTrials, latestRandomSeed)
+        .getApproxHint(_asset, nominalCollateralRatio.hex, numberOfTrials, latestRandomSeed)
         .then(({ latestRandomSeed, ...result }) => ({
           latestRandomSeed,
           results: [...results, result]
@@ -739,6 +749,7 @@ export class PopulatableEthersLiquity
     const { hintAddress } = results.reduce((a, b) => (a.diff.lt(b.diff) ? a : b));
 
     let [prev, next] = await sortedTroves.findInsertPosition(
+      _asset,
       nominalCollateralRatio.hex,
       hintAddress,
       hintAddress
@@ -749,9 +760,9 @@ export class PopulatableEthersLiquity
       // because it is deleted from the list before the reinsertion.
       // "Jump over" the Trove to get the proper hint.
       if (prev === ownAddress) {
-        prev = await sortedTroves.getPrev(prev);
+        prev = await sortedTroves.getPrev(_asset, prev);
       } else if (next === ownAddress) {
-        next = await sortedTroves.getNext(next);
+        next = await sortedTroves.getNext(_asset, next);
       }
     }
 
@@ -787,12 +798,12 @@ export class PopulatableEthersLiquity
   > {
     const { hintHelpers } = _getContracts(this._readable.connection);
     const price = await this._readable.getPrice();
-
+    const _asset = await hintHelpers.wstETH();
     const {
       firstRedemptionHint,
       partialRedemptionHintNICR,
       truncatedUamount
-    } = await hintHelpers.getRedemptionHints(amount.hex, price.hex, _redeemMaxIterations);
+    } = await hintHelpers.getRedemptionHints(_asset, amount.hex, price.hex, _redeemMaxIterations);
 
     const [
       partialRedemptionUpperHint,
@@ -825,6 +836,10 @@ export class PopulatableEthersLiquity
     const normalizedParams = _normalizeTroveCreation(params);
     const { depositCollateral, borrowLUSD } = normalizedParams;
 
+    //TODO: NEED TO FIX THIS WITH THE RIGHT VALUE FOR _TOKEN AMOUNT:
+    const _tokenAmount: BigNumberish = 1000;
+    const _asset: string = await borrowerOperations.wstETH();
+
     const [fees, blockTimestamp, total, price] = await Promise.all([
       this._readable._getFeesFactory(),
       this._readable._getBlockTimestamp(),
@@ -850,6 +865,8 @@ export class PopulatableEthersLiquity
     );
 
     const txParams = (borrowLUSD: Decimal): Parameters<typeof borrowerOperations.openTrove> => [
+      _asset,
+      _tokenAmount,
       maxBorrowingRate.hex,
       borrowLUSD.hex,
       ...hints,
@@ -899,9 +916,9 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersLiquityTransaction<TroveClosureDetails>> {
     overrides = this._prepareOverrides(overrides);
     const { borrowerOperations } = _getContracts(this._readable.connection);
-
+    const _asset: string = await borrowerOperations.wstETH();
     return this._wrapTroveClosure(
-      await borrowerOperations.estimateAndPopulate.closeTrove(overrides, id)
+      await borrowerOperations.estimateAndPopulate.closeTrove(overrides, id, _asset)
     );
   }
 
@@ -946,7 +963,7 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersLiquityTransaction<TroveAdjustmentDetails>> {
     overrides = this._prepareOverrides(overrides);
     const { borrowerOperations } = _getContracts(this._readable.connection);
-
+    const _asset: string = await borrowerOperations.wstETH();
     const normalizedParams = _normalizeTroveAdjustment(params);
     const { depositCollateral, withdrawCollateral, borrowLUSD, repayLUSD } = normalizedParams;
 
@@ -981,7 +998,12 @@ export class PopulatableEthersLiquity
       currentBorrowingRate
     );
 
+    //TODO: This needs to be fixed up and worked out what we should pass here
+    //TODO: _assetSent is a duummy variable 
+    const _assetSent: BigNumberish = "100"; 
     const txParams = (borrowLUSD?: Decimal): Parameters<typeof borrowerOperations.adjustTrove> => [
+      _asset,
+      _assetSent,
       maxBorrowingRate.hex,
       (withdrawCollateral ?? Decimal.ZERO).hex,
       (borrowLUSD ?? repayLUSD ?? Decimal.ZERO).hex,
@@ -1036,9 +1058,9 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersLiquityTransaction<void>> {
     overrides = this._prepareOverrides(overrides);
     const { borrowerOperations } = _getContracts(this._readable.connection);
-
+    const _asset: string = await borrowerOperations.wstETH();
     return this._wrapSimpleTransaction(
-      await borrowerOperations.estimateAndPopulate.claimCollateral(overrides, id)
+      await borrowerOperations.estimateAndPopulate.claimCollateral(overrides, id, _asset)
     );
   }
 
@@ -1066,18 +1088,21 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersLiquityTransaction<LiquidationDetails>> {
     overrides = this._prepareOverrides(overrides);
     const { troveManager } = _getContracts(this._readable.connection);
-
+    const _asset: string = await troveManager.wstETH();
     if (Array.isArray(address)) {
       return this._wrapLiquidation(
+        // TODO: Need to confirm order or arguments for _asset
         await troveManager.estimateAndPopulate.batchLiquidateTroves(
           overrides,
           addGasForLQTYIssuance,
+          _asset,
           address
         )
       );
     } else {
       return this._wrapLiquidation(
-        await troveManager.estimateAndPopulate.liquidate(overrides, addGasForLQTYIssuance, address)
+          // TODO: Need to confirm order or arguments for _asset
+        await troveManager.estimateAndPopulate.liquidate(overrides, addGasForLQTYIssuance, address, _asset)
       );
     }
   }
@@ -1089,11 +1114,12 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersLiquityTransaction<LiquidationDetails>> {
     overrides = this._prepareOverrides(overrides);
     const { troveManager } = _getContracts(this._readable.connection);
-
-    return this._wrapLiquidation(
+    const _asset: string = await troveManager.wstETH();
+    return this._wrapLiquidation( 
       await troveManager.estimateAndPopulate.liquidateTroves(
         overrides,
         addGasForLQTYIssuance,
+        _asset,
         maximumNumberOfTrovesToLiquidate
       )
     );
@@ -1114,7 +1140,7 @@ export class PopulatableEthersLiquity
       await stabilityPool.estimateAndPopulate.provideToSP(
         overrides,
         addGasForLQTYIssuance,
-        depositLUSD.hex, 
+        depositLUSD.hex
       )
     );
   }
@@ -1185,12 +1211,7 @@ export class PopulatableEthersLiquity
     const { uToken } = _getContracts(this._readable.connection);
 
     return this._wrapSimpleTransaction(
-      await uToken.estimateAndPopulate.transfer(
-        overrides,
-        id,
-        toAddress,
-        Decimal.from(amount).hex
-      )
+      await uToken.estimateAndPopulate.transfer(overrides, id, toAddress, Decimal.from(amount).hex)
     );
   }
 
@@ -1204,12 +1225,7 @@ export class PopulatableEthersLiquity
     const { youToken } = _getContracts(this._readable.connection);
 
     return this._wrapSimpleTransaction(
-      await youToken.estimateAndPopulate.transfer(
-        overrides,
-        id,
-        toAddress,
-        Decimal.from(amount).hex
-      )
+      await youToken.estimateAndPopulate.transfer(overrides, id, toAddress, Decimal.from(amount).hex)
     );
   }
 
@@ -1257,6 +1273,8 @@ export class PopulatableEthersLiquity
           : defaultMaxRedemptionRate(truncatedAmount);
 
       return new PopulatedEthersRedemption(
+        //Property 'redeemCollateral' does not exist on type '{ addTroveOwnerToArray: EstimatedContractFunction<PopulatedTransaction, [_asset: string, _borrower: string], Overrides>; applyPendingRewards: EstimatedContractFunction<...>; ... 21 more ...; updateTroveRewardSnapshots: EstimatedContractFunction<...>; }'.
+        // TODO: Need to figure out what redeemCollateral should be replaced with:
         await troveManager.estimateAndPopulate.redeemCollateral(
           preparedOverrides,
           addGasForBaseRateUpdate(),
