@@ -32,6 +32,9 @@ import {
 
 import { BlockPolledLiquityStore } from "./BlockPolledLiquityStore";
 
+//TODO: This is a dummy arg0 while we figure out what we really need here as an input for the mappings
+import { AddressZero } from "@ethersproject/constants";
+const dummyArg0: string = AddressZero;
 // TODO: these are constant in the contracts, so it doesn't make sense to make a call for them,
 // but to avoid having to update them here when we change them in the contracts, we could read
 // them once after deployment and save them to LiquityDeployment.
@@ -149,9 +152,10 @@ export class ReadableEthersLiquity implements ReadableLiquity {
   /** {@inheritDoc @liquity/lib-base#ReadableLiquity.getTotalRedistributed} */
   async getTotalRedistributed(overrides?: EthersCallOverrides): Promise<Trove> {
     const { troveManager } = _getContracts(this.connection);
+
     const [collateral, debt] = await Promise.all([
-      troveManager.L_ASSETS({ ...overrides }).then(decimalify), // arg0
-      troveManager.L_UDebts({ ...overrides }).then(decimalify) // arg0
+      troveManager.L_ASSETS(dummyArg0, { ...overrides }).then(decimalify), // arg0
+      troveManager.L_UDebts(dummyArg0, { ...overrides }).then(decimalify) // arg0
     ]);
 
     return new Trove(collateral, debt);
@@ -166,8 +170,8 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     const { troveManager } = _getContracts(this.connection);
 
     const [trove, snapshot] = await Promise.all([
-      troveManager.Troves(address, { ...overrides }), //arg0
-      troveManager.rewardSnapshots(address, { ...overrides }) //arg0
+      troveManager.Troves(dummyArg0, address, { ...overrides }), //arg0
+      troveManager.rewardSnapshots(dummyArg0, address, { ...overrides }) //arg0
     ]);
 
     if (trove.status === BackendTroveStatus.active) {
@@ -177,7 +181,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
         decimalify(trove.coll),
         decimalify(trove.debt),
         decimalify(trove.stake),
-        new Trove(decimalify(snapshot.ETH), decimalify(snapshot.LUSDDebt))
+        new Trove(decimalify(snapshot.asset), decimalify(snapshot.UDebt))
       );
     } else {
       return new TroveWithPendingRedistribution(address, userTroveStatusFrom(trove.status));
@@ -277,7 +281,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     const { communityIssuance } = _getContracts(this.connection);
 
     const issuanceCap = this.connection.totalStabilityPoolLQTYReward;
-    const totalYOUIssued = decimalify(await communityIssuance.totalYOUIssued({ ...overrides })); //arg0
+    const totalYOUIssued = decimalify(await communityIssuance.totalYOUIssued(dummyArg0, { ...overrides })); //arg0
 
     // totalYOUIssued approaches but never reaches issuanceCap
     return issuanceCap.sub(totalYOUIssued);
@@ -436,14 +440,17 @@ export class ReadableEthersLiquity implements ReadableLiquity {
   }
 
   /** @internal */
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // TEMP REMOVAL
+  //
   async _getFeesFactory(
     overrides?: EthersCallOverrides
   ): Promise<(blockTimestamp: number, recoveryMode: boolean) => Fees> {
     const { troveManager } = _getContracts(this.connection);
 
     const [lastFeeOperationTime, baseRateWithoutDecay] = await Promise.all([
-      troveManager.lastFeeOperationTime({ ...overrides }), //arg0
-      troveManager.baseRate({ ...overrides }).then(decimalify) //arg0
+      troveManager.lastFeeOperationTime(dummyArg0, { ...overrides }), //arg0
+      troveManager.baseRate(dummyArg0, { ...overrides }).then(decimalify) //arg0
     ]);
 
     return (blockTimestamp, recoveryMode) =>

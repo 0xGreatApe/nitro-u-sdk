@@ -439,11 +439,11 @@ export class PopulatedEthersRedemption
       ({ logs }) =>
         troveManager
           .extractEvents(logs, "Redemption")
-          .map(({ args: { _ETHSent, _ETHFee, _actualLUSDAmount, _attemptedLUSDAmount } }) => ({
-            attemptedLUSDAmount: decimalify(_attemptedLUSDAmount),
-            actualLUSDAmount: decimalify(_actualLUSDAmount),
-            collateralTaken: decimalify(_ETHSent),
-            fee: decimalify(_ETHFee)
+          .map(({ args: { _AssetSent, _AssetFee, _actualYOUmount, _attemptedYOUmount } }) => ({
+            attemptedLUSDAmount: decimalify(_attemptedYOUmount),
+            actualLUSDAmount: decimalify(_actualYOUmount),
+            collateralTaken: decimalify(_AssetSent),
+            fee: decimalify(_AssetFee)
           }))[0]
     );
 
@@ -520,8 +520,8 @@ export class PopulatableEthersLiquity
           .map(({ args: { _coll, _debt } }) => new Trove(decimalify(_coll), decimalify(_debt)));
 
         const [fee] = borrowerOperations
-          .extractEvents(logs, "LUSDBorrowingFeePaid")
-          .map(({ args: { _LUSDFee } }) => decimalify(_LUSDFee));
+          .extractEvents(logs, "UBorrowingFeePaid")
+          .map(({ args: { _UFee } }) => decimalify(_UFee));
 
         return {
           params,
@@ -550,7 +550,7 @@ export class PopulatableEthersLiquity
           .map(({ args: { value } }) => decimalify(value));
 
         const [withdrawCollateral] = activePool
-          .extractEvents(logs, "EtherSent")
+          .extractEvents(logs, "AssetSent")
           .filter(({ args: { _to } }) => _to === userAddress)
           .map(({ args: { _amount } }) => decimalify(_amount));
 
@@ -579,10 +579,10 @@ export class PopulatableEthersLiquity
           .extractEvents(logs, "Liquidation")
           .map(
             ({
-              args: { _LUSDGasCompensation, _collGasCompensation, _liquidatedColl, _liquidatedDebt }
+              args: { _UGasCompensation, _collGasCompensation, _liquidatedColl, _liquidatedDebt }
             }) => ({
               collateralGasCompensation: decimalify(_collGasCompensation),
-              lusdGasCompensation: decimalify(_LUSDGasCompensation),
+              lusdGasCompensation: decimalify(_UGasCompensation),
               totalLiquidated: new Trove(decimalify(_liquidatedColl), decimalify(_liquidatedDebt))
             })
           );
@@ -605,12 +605,12 @@ export class PopulatableEthersLiquity
       .map(({ args: { _newDeposit } }) => decimalify(_newDeposit));
 
     const [[collateralGain, lusdLoss]] = stabilityPool
-      .extractEvents(logs, "ETHGainWithdrawn")
-      .map(({ args: { _ETH, _LUSDLoss } }) => [decimalify(_ETH), decimalify(_LUSDLoss)]);
+      .extractEvents(logs, "AssetGainWithdrawn")
+      .map(({ args: { _Asset, _ULoss } }) => [decimalify(_Asset), decimalify(_ULoss)]);
 
     const [lqtyReward] = stabilityPool
-      .extractEvents(logs, "LQTYPaidToDepositor")
-      .map(({ args: { _LQTY } }) => decimalify(_LQTY));
+      .extractEvents(logs, "YOUPaidToDepositor")
+      .map(({ args: { _YOU } }) => decimalify(_YOU));
 
     return {
       lusdLoss,
@@ -791,7 +791,7 @@ export class PopulatableEthersLiquity
     const {
       firstRedemptionHint,
       partialRedemptionHintNICR,
-      truncatedLUSDamount
+      truncatedUamount
     } = await hintHelpers.getRedemptionHints(amount.hex, price.hex, _redeemMaxIterations);
 
     const [
@@ -805,7 +805,7 @@ export class PopulatableEthersLiquity
         );
 
     return [
-      decimalify(truncatedLUSDamount),
+      decimalify(truncatedUamount),
       firstRedemptionHint,
       partialRedemptionUpperHint,
       partialRedemptionLowerHint,
@@ -1114,8 +1114,7 @@ export class PopulatableEthersLiquity
       await stabilityPool.estimateAndPopulate.provideToSP(
         overrides,
         addGasForLQTYIssuance,
-        depositLUSD.hex,
-        frontendTag ?? this._readable.connection.frontendTag ?? AddressZero
+        depositLUSD.hex, 
       )
     );
   }
@@ -1168,7 +1167,7 @@ export class PopulatableEthersLiquity
     const finalTrove = initialTrove.addCollateral(stabilityDeposit.collateralGain);
 
     return this._wrapCollateralGainTransfer(
-      await stabilityPool.estimateAndPopulate.withdrawETHGainToTrove(
+      await stabilityPool.estimateAndPopulate.withdrawAssetGainToTrove(
         overrides,
         compose(addGasForPotentialListTraversal, addGasForLQTYIssuance),
         ...(await this._findHints(finalTrove, overrides.from))
