@@ -629,7 +629,8 @@ export class PopulatableEthersLiquity
     };
   }
 
-  private _wrapStabilityPoolGainsWithdrawal(
+  private _wrap
+  GainsWithdrawal(
     rawPopulatedTransaction: EthersPopulatedTransaction
   ): PopulatedEthersLiquityTransaction<StabilityPoolGainsWithdrawalDetails> {
     return new PopulatedEthersLiquityTransaction(
@@ -657,7 +658,7 @@ export class PopulatableEthersLiquity
   private async _wrapStabilityDepositWithdrawal(
     rawPopulatedTransaction: EthersPopulatedTransaction
   ): Promise<PopulatedEthersLiquityTransaction<StabilityDepositChangeDetails>> {
-    const { stabilityPool, uToken } = _getContracts(this._readable.connection);
+    const { uToken } = _getContracts(this._readable.connection);
     const stabilityPoolAddress = this._readable.connection.addresses.stabilityPool;
 
     return new PopulatedEthersLiquityTransaction(
