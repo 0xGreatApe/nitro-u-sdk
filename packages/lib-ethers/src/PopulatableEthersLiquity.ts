@@ -629,8 +629,7 @@ export class PopulatableEthersLiquity
     };
   }
 
-  private _wrap
-  GainsWithdrawal(
+  private _wrapStabilityPoolGainsWithdrawal(
     rawPopulatedTransaction: EthersPopulatedTransaction
   ): PopulatedEthersLiquityTransaction<StabilityPoolGainsWithdrawalDetails> {
     return new PopulatedEthersLiquityTransaction(
@@ -1000,8 +999,8 @@ export class PopulatableEthersLiquity
     );
 
     //TODO: This needs to be fixed up and worked out what we should pass here
-    //TODO: _assetSent is a duummy variable 
-    const _assetSent: BigNumberish = "100"; 
+    //TODO: _assetSent is a duummy variable
+    const _assetSent: BigNumberish = "100";
     const txParams = (borrowLUSD?: Decimal): Parameters<typeof borrowerOperations.adjustTrove> => [
       _asset,
       _assetSent,
@@ -1102,8 +1101,13 @@ export class PopulatableEthersLiquity
       );
     } else {
       return this._wrapLiquidation(
-          // TODO: Need to confirm order or arguments for _asset
-        await troveManager.estimateAndPopulate.liquidate(overrides, addGasForLQTYIssuance, address, _asset)
+        // TODO: Need to confirm order or arguments for _asset
+        await troveManager.estimateAndPopulate.liquidate(
+          overrides,
+          addGasForLQTYIssuance,
+          address,
+          _asset
+        )
       );
     }
   }
@@ -1116,7 +1120,7 @@ export class PopulatableEthersLiquity
     overrides = this._prepareOverrides(overrides);
     const { troveManager } = _getContracts(this._readable.connection);
     const _asset: string = await troveManager.wstETH();
-    return this._wrapLiquidation( 
+    return this._wrapLiquidation(
       await troveManager.estimateAndPopulate.liquidateTroves(
         overrides,
         addGasForLQTYIssuance,
