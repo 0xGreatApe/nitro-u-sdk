@@ -1126,3 +1126,81 @@ export interface Unipool
   extractEvents(logs: Log[], name: "UniTokenAddressChanged"): _TypedLogDescription<{ _uniTokenAddress: string }>[];
   extractEvents(logs: Log[], name: "Withdrawn"): _TypedLogDescription<{ user: string; amount: BigNumber }>[];
 }
+
+interface RedemptionManagerCalls {
+  BETA(_overrides?: CallOverrides): Promise<BigNumber>;
+  DECIMAL_PRECISION(_overrides?: CallOverrides): Promise<BigNumber>;
+  ETH_REF_ADDRESS(_overrides?: CallOverrides): Promise<string>;
+  NAME(_overrides?: CallOverrides): Promise<string>;
+  getEntireSystemColl(_asset: string, _overrides?: CallOverrides): Promise<BigNumber>;
+  getEntireSystemDebt(_asset: string, _overrides?: CallOverrides): Promise<BigNumber>;
+  getRedemptionFeeWithDecay(_asset: string, _assetDraw: BigNumberish, _overrides?: CallOverrides): Promise<BigNumber>;
+  getRedemptionRate(_asset: string, _overrides?: CallOverrides): Promise<BigNumber>;
+  getRedemptionRateWithDecay(_asset: string, _overrides?: CallOverrides): Promise<BigNumber>;
+  isInitialized(_overrides?: CallOverrides): Promise<boolean>;
+  isRedemptionWhitelisted(_overrides?: CallOverrides): Promise<boolean>;
+  owner(_overrides?: CallOverrides): Promise<string>;
+  redemptionWhitelist(arg0: string, _overrides?: CallOverrides): Promise<boolean>;
+  troveManager(_overrides?: CallOverrides): Promise<string>;
+  vestaParams(_overrides?: CallOverrides): Promise<string>;
+  wstETH(_overrides?: CallOverrides): Promise<string>;
+}
+
+interface RedemptionManagerTransactions {
+  addUserToWhitelistRedemption(_user: string, _overrides?: Overrides): Promise<void>;
+  redeemCollateral(_asset: string, _Uamount: BigNumberish, _firstRedemptionHint: string, _upperPartialRedemptionHint: string, _lowerPartialRedemptionHint: string, _partialRedemptionHintNICR: BigNumberish, _maxIterations: BigNumberish, _maxFeePercentage: BigNumberish, _overrides?: Overrides): Promise<void>;
+  removeUserFromWhitelistRedemption(_user: string, _overrides?: Overrides): Promise<void>;
+  renounceOwnership(_overrides?: Overrides): Promise<void>;
+  setAddresses(_troveManager: string, _overrides?: Overrides): Promise<void>;
+  setRedemptionWhitelistStatus(_status: boolean, _overrides?: Overrides): Promise<void>;
+  setVestaParameters(_vaultParams: string, _overrides?: Overrides): Promise<void>;
+  transferOwnership(newOwner: string, _overrides?: Overrides): Promise<void>;
+}
+
+export interface RedemptionManager
+  extends _TypedLiquityContract<RedemptionManagerCalls, RedemptionManagerTransactions> {
+  readonly filters: {
+    BaseRateUpdated(_asset?: string | null, _baseRate?: null): EventFilter;
+    BorrowerOperationsAddressChanged(_newBorrowerOperationsAddress?: null): EventFilter;
+    CollSurplusPoolAddressChanged(_collSurplusPoolAddress?: null): EventFilter;
+    GasPoolAddressChanged(_gasPoolAddress?: null): EventFilter;
+    Initialized(version?: null): EventFilter;
+    LTermsUpdated(_asset?: string | null, _L_ETH?: null, _L_UDebt?: null): EventFilter;
+    LastFeeOpTimeUpdated(_asset?: string | null, _lastFeeOpTime?: null): EventFilter;
+    Liquidation(_asset?: string | null, _liquidatedDebt?: null, _liquidatedColl?: null, _collGasCompensation?: null, _UGasCompensation?: null): EventFilter;
+    OwnershipTransferred(previousOwner?: string | null, newOwner?: string | null): EventFilter;
+    Redemption(_asset?: string | null, _attemptedYOUmount?: null, _actualYOUmount?: null, _AssetSent?: null, _AssetFee?: null): EventFilter;
+    SortedTrovesAddressChanged(_sortedTrovesAddress?: null): EventFilter;
+    StabilityPoolAddressChanged(_stabilityPoolAddress?: null): EventFilter;
+    SystemSnapshotsUpdated(_asset?: string | null, _totalStakesSnapshot?: null, _totalCollateralSnapshot?: null): EventFilter;
+    TotalStakesUpdated(_asset?: string | null, _newTotalStakes?: null): EventFilter;
+    TroveIndexUpdated(_asset?: string | null, _borrower?: null, _newIndex?: null): EventFilter;
+    TroveLiquidated(_asset?: string | null, _borrower?: string | null, _debt?: null, _coll?: null, operation?: null): EventFilter;
+    TroveSnapshotsUpdated(_asset?: string | null, _L_ETH?: null, _L_UDebt?: null): EventFilter;
+    TroveUpdated(_asset?: string | null, _borrower?: string | null, _debt?: null, _coll?: null, stake?: null, operation?: null): EventFilter;
+    UTokenAddressChanged(_newUTokenAddress?: null): EventFilter;
+    VaultParametersBaseChanged(newAddress?: string | null): EventFilter;
+    YOUStakingAddressChanged(_YOUStakingAddress?: null): EventFilter;
+  };
+  extractEvents(logs: Log[], name: "BaseRateUpdated"): _TypedLogDescription<{ _asset: string; _baseRate: BigNumber }>[];
+  extractEvents(logs: Log[], name: "BorrowerOperationsAddressChanged"): _TypedLogDescription<{ _newBorrowerOperationsAddress: string }>[];
+  extractEvents(logs: Log[], name: "CollSurplusPoolAddressChanged"): _TypedLogDescription<{ _collSurplusPoolAddress: string }>[];
+  extractEvents(logs: Log[], name: "GasPoolAddressChanged"): _TypedLogDescription<{ _gasPoolAddress: string }>[];
+  extractEvents(logs: Log[], name: "Initialized"): _TypedLogDescription<{ version: number }>[];
+  extractEvents(logs: Log[], name: "LTermsUpdated"): _TypedLogDescription<{ _asset: string; _L_ETH: BigNumber; _L_UDebt: BigNumber }>[];
+  extractEvents(logs: Log[], name: "LastFeeOpTimeUpdated"): _TypedLogDescription<{ _asset: string; _lastFeeOpTime: BigNumber }>[];
+  extractEvents(logs: Log[], name: "Liquidation"): _TypedLogDescription<{ _asset: string; _liquidatedDebt: BigNumber; _liquidatedColl: BigNumber; _collGasCompensation: BigNumber; _UGasCompensation: BigNumber }>[];
+  extractEvents(logs: Log[], name: "OwnershipTransferred"): _TypedLogDescription<{ previousOwner: string; newOwner: string }>[];
+  extractEvents(logs: Log[], name: "Redemption"): _TypedLogDescription<{ _asset: string; _attemptedYOUmount: BigNumber; _actualYOUmount: BigNumber; _AssetSent: BigNumber; _AssetFee: BigNumber }>[];
+  extractEvents(logs: Log[], name: "SortedTrovesAddressChanged"): _TypedLogDescription<{ _sortedTrovesAddress: string }>[];
+  extractEvents(logs: Log[], name: "StabilityPoolAddressChanged"): _TypedLogDescription<{ _stabilityPoolAddress: string }>[];
+  extractEvents(logs: Log[], name: "SystemSnapshotsUpdated"): _TypedLogDescription<{ _asset: string; _totalStakesSnapshot: BigNumber; _totalCollateralSnapshot: BigNumber }>[];
+  extractEvents(logs: Log[], name: "TotalStakesUpdated"): _TypedLogDescription<{ _asset: string; _newTotalStakes: BigNumber }>[];
+  extractEvents(logs: Log[], name: "TroveIndexUpdated"): _TypedLogDescription<{ _asset: string; _borrower: string; _newIndex: BigNumber }>[];
+  extractEvents(logs: Log[], name: "TroveLiquidated"): _TypedLogDescription<{ _asset: string; _borrower: string; _debt: BigNumber; _coll: BigNumber; operation: number }>[];
+  extractEvents(logs: Log[], name: "TroveSnapshotsUpdated"): _TypedLogDescription<{ _asset: string; _L_ETH: BigNumber; _L_UDebt: BigNumber }>[];
+  extractEvents(logs: Log[], name: "TroveUpdated"): _TypedLogDescription<{ _asset: string; _borrower: string; _debt: BigNumber; _coll: BigNumber; stake: BigNumber; operation: number }>[];
+  extractEvents(logs: Log[], name: "UTokenAddressChanged"): _TypedLogDescription<{ _newUTokenAddress: string }>[];
+  extractEvents(logs: Log[], name: "VaultParametersBaseChanged"): _TypedLogDescription<{ newAddress: string }>[];
+  extractEvents(logs: Log[], name: "YOUStakingAddressChanged"): _TypedLogDescription<{ _YOUStakingAddress: string }>[];
+}

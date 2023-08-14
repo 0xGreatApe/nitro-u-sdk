@@ -23,6 +23,7 @@ import SortedTroves from "../../contracts/artifacts/contracts/SortedTroves.sol/S
 import StabilityPool from "../../contracts/artifacts/contracts/StabilityPool.sol/StabilityPool.json";
 import TroveManager from "../../contracts/artifacts/contracts/TroveManager.sol/TroveManager.json";
 import Unipool from "../../contracts/artifacts/contracts/LPRewards/Unipool.sol/Unipool.json";
+import RedemptionManager from "../../contracts/artifacts/contracts/RedemptionManager.sol/RedemptionManager.json";
 
 const getTupleType = (components: ParamType[], flexible: boolean) => {
   if (components.every(component => component.name)) {
@@ -162,7 +163,8 @@ const contractArtifacts = [
   SortedTroves,
   StabilityPool,
   TroveManager,
-  Unipool
+  Unipool,
+  RedemptionManager
 ];
 
 const contracts = contractArtifacts.map(({ contractName, abi }) => ({

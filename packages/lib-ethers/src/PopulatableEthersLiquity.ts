@@ -1242,8 +1242,9 @@ export class PopulatableEthersLiquity
   ): Promise<PopulatedEthersRedemption> {
     const preparedOverrides = this._prepareOverrides(overrides);
     const { troveManager } = _getContracts(this._readable.connection);
+    const { redemptionManager } = _getContracts(this._readable.connection);
     const attemptedLUSDAmount = Decimal.from(amount);
-
+    const _asset: string = await troveManager.wstETH();
     const [
       fees,
       total,
@@ -1280,9 +1281,10 @@ export class PopulatableEthersLiquity
       return new PopulatedEthersRedemption(
         //Property 'redeemCollateral' does not exist on type '{ addTroveOwnerToArray: EstimatedContractFunction<PopulatedTransaction, [_asset: string, _borrower: string], Overrides>; applyPendingRewards: EstimatedContractFunction<...>; ... 21 more ...; updateTroveRewardSnapshots: EstimatedContractFunction<...>; }'.
         // TODO: Need to figure out what redeemCollateral should be replaced with:
-        await troveManager.estimateAndPopulate.redeemCollateral(
+        await redemptionManager.estimateAndPopulate.redeemCollateral(
           preparedOverrides,
           addGasForBaseRateUpdate(),
+          _asset,
           truncatedAmount.hex,
           firstRedemptionHint,
           ...partialHints,

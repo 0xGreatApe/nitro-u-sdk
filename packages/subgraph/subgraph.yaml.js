@@ -36,22 +36,19 @@ dataSources:
         - Transaction
         - Trove
         - TroveChange
-        - Redemption
         - Liquidation
         - SystemState
       abis:
         - name: TroveManager
           file: ../lib-ethers/abi/TroveManager.json
       eventHandlers:
-        - event: TroveUpdated(indexed address,uint256,uint256,uint256,uint8)
+        - event: TroveUpdated(indexed address,indexed address,uint256,uint256,uint256,uint8)
           handler: handleTroveUpdated
-        - event: TroveLiquidated(indexed address,uint256,uint256,uint8)
+        - event: TroveLiquidated(indexed address,indexed address,uint256,uint256,uint8)
           handler: handleTroveLiquidated
-        - event: Liquidation(uint256,uint256,uint256,uint256)
-          handler: handleLiquidation
-        - event: Redemption(uint256,uint256,uint256,uint256)
-          handler: handleRedemption
-        - event: LTermsUpdated(uint256,uint256)
+        - event: Liquidation(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLiquidation 
+        - event: LTermsUpdated(indexed address,uint256,uint256)
           handler: handleLTermsUpdated
   - name: BorrowerOperations
     kind: ethereum/contract
@@ -76,10 +73,10 @@ dataSources:
         - name: BorrowerOperations
           file: ../lib-ethers/abi/BorrowerOperations.json
       eventHandlers:
-        - event: TroveUpdated(indexed address,uint256,uint256,uint256,uint8)
+        - event: TroveUpdated(indexed address,indexed address,uint256,uint256,uint256,uint8)
           handler: handleTroveUpdated
-        - event: LUSDBorrowingFeePaid(indexed address,uint256)
-          handler: handleLUSDBorrowingFeePaid
+        - event: UBorrowingFeePaid(indexed address,indexed address,uint256)
+          handler: handleUBorrowingFeePaid
   - name: PriceFeed
     kind: ethereum/contract
     network: mainnet
@@ -101,7 +98,7 @@ dataSources:
         - name: PriceFeed
           file: ../lib-ethers/abi/PriceFeed.json
       eventHandlers:
-        - event: LastGoodPriceUpdated(uint256)
+        - event: LastGoodPriceUpdated(indexed address,uint256)
           handler: handleLastGoodPriceUpdated
   - name: StabilityPool
     kind: ethereum/contract
@@ -129,12 +126,8 @@ dataSources:
       eventHandlers:
         - event: UserDepositChanged(indexed address,uint256)
           handler: handleUserDepositChanged
-        - event: ETHGainWithdrawn(indexed address,uint256,uint256)
-          handler: handleETHGainWithdrawn
-        - event: FrontEndRegistered(indexed address,uint256)
-          handler: handleFrontendRegistered
-        - event: FrontEndTagSet(indexed address,indexed address)
-          handler: handleFrontendTagSet
+        - event: AssetGainWithdrawn(indexed address,uint256,uint256)
+          handler: handleAssetGainWithdrawn 
   - name: CollSurplusPool
     kind: ethereum/contract
     network: mainnet
@@ -160,12 +153,12 @@ dataSources:
       eventHandlers:
         - event: CollBalanceUpdated(indexed address,uint256)
           handler: handleCollSurplusBalanceUpdated
-  - name: LQTYStaking
+  - name: youStaking
     kind: ethereum/contract
     network: mainnet
     source:
-      abi: LQTYStaking
-      address: "${addresses.lqtyStaking}"
+      abi: YOUStaking
+      address: "${addresses.youStaking}"
       startBlock: ${startBlock}
     mapping:
       file: ./src/mappings/LqtyStake.ts
@@ -179,16 +172,16 @@ dataSources:
         - LqtyStake
         - LqtyStakeChange
       abis:
-        - name: LQTYStaking
-          file: ../lib-ethers/abi/LQTYStaking.json
+        - name: YOUStaking
+          file: ../lib-ethers/abi/YOUStaking.json
       eventHandlers:
         - event: StakeChanged(indexed address,uint256)
           handler: handleStakeChanged
-        - event: StakingGainsWithdrawn(indexed address,uint256,uint256)
-          handler: handleStakeGainsWithdrawn
+        - event: StakingGainsAssetWithdrawn(indexed address,indexed address,uint256)
+          handler: handleStakingGainsAssetWithdrawn
 ${[
-  ["LUSDToken", addresses.lusdToken],
-  ["LQTYToken", addresses.lqtyToken]
+  ["uToken", addresses.uToken],
+  ["YOUToken", addresses.youToken]
 ].map(
   ([name, address]) => yaml`
   - name: ${name}
