@@ -28,7 +28,7 @@ import type {
   BondClaimedEvent
 } from "@liquity/chicken-bonds/lusd/types/ChickenBondManager";
 import { Decimal } from "@liquity/lib-base";
-import type { LUSDToken } from "@liquity/lib-ethers/dist/types";
+import type { UToken } from "@liquity/lib-ethers/dist/types";
 import type { ProtocolInfo, Bond, BondStatus, Stats, Maybe, BLusdLpRewards } from "./transitions";
 import {
   numberify,
@@ -656,10 +656,10 @@ const getTokenTotalSupply = async (token: ERC20): Promise<Decimal> => {
 
 const isInfiniteBondApproved = async (
   account: string,
-  lusdToken: LUSDToken,
+  uToken: UToken,
   chickenBondManager: ChickenBondManager
 ): Promise<boolean> => {
-  const allowance = await lusdToken.allowance(account, chickenBondManager.address);
+  const allowance = await uToken.allowance(account, chickenBondManager.address);
 
   // Unlike bLUSD, LUSD doesn't explicitly handle infinite approvals, therefore the allowance will
   // start to decrease from 2**64.
@@ -668,11 +668,11 @@ const isInfiniteBondApproved = async (
 };
 
 const approveInfiniteBond = async (
-  lusdToken: LUSDToken | undefined,
+  uToken: UToken | undefined,
   chickenBondManager: ChickenBondManager | undefined,
   signer: Signer | undefined
 ): Promise<void> => {
-  if (lusdToken === undefined || chickenBondManager === undefined || signer === undefined) {
+  if (uToken === undefined || chickenBondManager === undefined || signer === undefined) {
     throw new Error("approveInfiniteBond() failed: a dependency is null");
   }
 
@@ -680,7 +680,7 @@ const approveInfiniteBond = async (
 
   try {
     await (
-      await ((lusdToken as unknown) as Contract)
+      await ((uToken as unknown) as Contract)
         .connect(signer)
         .approve(chickenBondManager.address, constants.MaxUint256._hex)
     ).wait();
@@ -883,7 +883,7 @@ const claimBond = async (
 
 const isTokenApprovedWithBLusdAmm = async (
   account: string,
-  token: LUSDToken | BLUSDToken,
+  token: UToken | BLUSDToken,
   bLusdAmmAddress: string | null
 ): Promise<boolean> => {
   if (bLusdAmmAddress === null) {
@@ -900,7 +900,7 @@ const isTokenApprovedWithBLusdAmm = async (
 
 const isTokenApprovedWithBLusdAmmMainnet = async (
   account: string,
-  token: LUSDToken | BLUSDToken
+  token: UToken | BLUSDToken
 ): Promise<boolean> => {
   const allowance = await token.allowance(account, CURVE_REGISTRY_SWAPS_ADDRESS);
 
@@ -912,7 +912,7 @@ const isTokenApprovedWithBLusdAmmMainnet = async (
 
 const isTokenApprovedWithAmmZapper = async (
   account: string,
-  token: LUSDToken | BLUSDToken | ERC20,
+  token: UToken | BLUSDToken | ERC20,
   ammZapperAddress: string | null
 ): Promise<boolean> => {
   if (ammZapperAddress === null) {
@@ -923,7 +923,7 @@ const isTokenApprovedWithAmmZapper = async (
 };
 
 const approveTokenWithBLusdAmm = async (
-  token: LUSDToken | BLUSDToken | undefined,
+  token: UToken | BLUSDToken | undefined,
   bLusdAmmAddress: string | null,
   signer: Signer | undefined
 ) => {
@@ -938,7 +938,7 @@ const approveTokenWithBLusdAmm = async (
 };
 
 const approveToken = async (
-  token: LUSDToken | BLUSDToken | ERC20 | undefined,
+  token: UToken | BLUSDToken | ERC20 | undefined,
   spenderAddress: string | null,
   signer: Signer | undefined
 ) => {
@@ -953,7 +953,7 @@ const approveToken = async (
 };
 
 const approveTokenWithBLusdAmmMainnet = async (
-  token: LUSDToken | BLUSDToken | undefined,
+  token: UToken | BLUSDToken | undefined,
   signer: Signer | undefined
 ) => {
   if (token === undefined || signer === undefined) {
