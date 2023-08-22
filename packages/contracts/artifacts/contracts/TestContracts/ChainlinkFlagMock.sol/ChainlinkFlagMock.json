@@ -1,0 +1,114 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ChainlinkFlagMock",
+  "sourceName": "contracts/TestContracts/ChainlinkFlagMock.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "getFlag",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "name": "getFlags",
+      "outputs": [
+        {
+          "internalType": "bool[]",
+          "name": "aa",
+          "type": "bool[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "name": "lowerFlags",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "raiseFlag",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "name": "raiseFlags",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "isRaised",
+          "type": "bool"
+        }
+      ],
+      "name": "setFlag",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "setRaisingAccessController",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061024a806100206000396000f3fe608060405234801561001057600080fd5b506004361061006d5760003560e01c80632828659614610072578063357e47fe146100865780633927f6af146100b3578063517e89fe146100d4578063760bc82d146100725780637d723cac146100e5578063d74af263146100d4575b600080fd5b610084610080366004610108565b5050565b005b61009e61009436600461017c565b5060005460ff1690565b60405190151581526020015b60405180910390f35b6100846100c13660046101ac565b6000805460ff1916911515919091179055565b6100846100e236600461017c565b50565b6100fb6100f3366004610108565b606092915050565b6040516100aa91906101ce565b6000806020838503121561011b57600080fd5b82356001600160401b038082111561013257600080fd5b818501915085601f83011261014657600080fd5b81358181111561015557600080fd5b8660208260051b850101111561016a57600080fd5b60209290920196919550909350505050565b60006020828403121561018e57600080fd5b81356001600160a01b03811681146101a557600080fd5b9392505050565b6000602082840312156101be57600080fd5b813580151581146101a557600080fd5b6020808252825182820181905260009190848201906040850190845b818110156102085783511515835292840192918401916001016101ea565b5090969550505050505056fea264697066735822122057cd2d049351e4408518b4810d828307a9ecf4fd0049e8a8eeed752877ce47da64736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061006d5760003560e01c80632828659614610072578063357e47fe146100865780633927f6af146100b3578063517e89fe146100d4578063760bc82d146100725780637d723cac146100e5578063d74af263146100d4575b600080fd5b610084610080366004610108565b5050565b005b61009e61009436600461017c565b5060005460ff1690565b60405190151581526020015b60405180910390f35b6100846100c13660046101ac565b6000805460ff1916911515919091179055565b6100846100e236600461017c565b50565b6100fb6100f3366004610108565b606092915050565b6040516100aa91906101ce565b6000806020838503121561011b57600080fd5b82356001600160401b038082111561013257600080fd5b818501915085601f83011261014657600080fd5b81358181111561015557600080fd5b8660208260051b850101111561016a57600080fd5b60209290920196919550909350505050565b60006020828403121561018e57600080fd5b81356001600160a01b03811681146101a557600080fd5b9392505050565b6000602082840312156101be57600080fd5b813580151581146101a557600080fd5b6020808252825182820181905260009190848201906040850190845b818110156102085783511515835292840192918401916001016101ea565b5090969550505050505056fea264697066735822122057cd2d049351e4408518b4810d828307a9ecf4fd0049e8a8eeed752877ce47da64736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

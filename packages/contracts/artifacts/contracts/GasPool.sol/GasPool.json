@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "GasPool",
+  "sourceName": "contracts/GasPool.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220db5f99b558401f04225b05ef6ab4e8418d4e775f308bf5f108abe71efc66b43264736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220db5f99b558401f04225b05ef6ab4e8418d4e775f308bf5f108abe71efc66b43264736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
