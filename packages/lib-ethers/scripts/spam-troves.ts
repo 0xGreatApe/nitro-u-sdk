@@ -3,15 +3,15 @@ import { TransactionResponse } from "@ethersproject/abstract-provider";
 import { JsonRpcProvider } from "@ethersproject/providers";
 import { Wallet } from "@ethersproject/wallet";
 
-import { Decimal, LUSD_MINIMUM_DEBT, Trove } from "@liquity/lib-base";
-import { EthersLiquity, EthersLiquityWithStore, BlockPolledLiquityStore } from "@liquity/lib-ethers";
+import { Decimal, LUSD_MINIMUM_DEBT, Trove } from "@u/lib-base-u";
+import { EthersLiquity, EthersLiquityWithStore, BlockPolledLiquityStore } from "@u/lib-ethers-u";
 
 import {
   Batched,
   BatchedProvider,
   WebSocketAugmented,
   WebSocketAugmentedProvider
-} from "@liquity/providers";
+} from "@liquity/providers/providers";
 
 const BatchedWebSocketAugmentedJsonRpcProvider = Batched(WebSocketAugmented(JsonRpcProvider));
 

@@ -1,4 +1,4 @@
-import { Decimal } from "@liquity/lib-base";
+import { Decimal } from "@u/lib-base-u";
 
 type CoinGeckoSimplePriceResponse<T extends string, U extends string> = {
   [P in T]: {

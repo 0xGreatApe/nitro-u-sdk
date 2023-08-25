@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { AddressZero } from "@ethersproject/constants";
 
-import { LiquityStoreState } from "@liquity/lib-base";
-import { useLiquitySelector } from "@liquity/lib-react";
+import { LiquityStoreState } from "@u/lib-base-u";
+import { useLiquitySelector } from "@u/lib-react-u";
 
 import { useLiquity } from "../hooks/LiquityContext";
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Card, Heading, Box, Flex, Button } from "theme-ui";
-import { useLiquitySelector } from "@liquity/lib-react";
-import { LiquityStoreState } from "@liquity/lib-base";
+import { useLiquitySelector } from "@u/lib-react-u";
+import { LiquityStoreState } from "@u/lib-base-u";
 import { DisabledEditableRow } from "./Editor";
 import { useTroveView } from "./context/TroveViewContext";
 import { Icon } from "../Icon";

@@ -8,9 +8,9 @@ import {
   CRITICAL_COLLATERAL_RATIO,
   UserTrove,
   Decimal
-} from "@liquity/lib-base";
-import { BlockPolledLiquityStoreState } from "@liquity/lib-ethers";
-import { useLiquitySelector } from "@liquity/lib-react";
+} from "@u/lib-base-u";
+import { BlockPolledLiquityStoreState } from "@u/lib-ethers-u";
+import { useLiquitySelector } from "@u/lib-react-u";
 
 import { shortenAddress } from "../utils/shortenAddress";
 import { useLiquity } from "../hooks/LiquityContext";

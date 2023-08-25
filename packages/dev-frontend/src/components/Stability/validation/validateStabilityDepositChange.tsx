@@ -1,9 +1,4 @@
-import {
-  Decimal,
-  LiquityStoreState,
-  StabilityDeposit,
-  StabilityDepositChange
-} from "@liquity/lib-base";
+import { Decimal, LiquityStoreState, StabilityDeposit, StabilityDepositChange } from "@u/lib-base-u";
 
 import { COIN } from "../../../strings";
 import { Amount } from "../../ActionDescription";

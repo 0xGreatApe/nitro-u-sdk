@@ -1,5 +1,5 @@
 {
-  "name": "@liquity/lib-react",
+  "name": "@u/lib-react-u",
   "version": "0.0.0-semantic-release",
   "description": "Components and hooks for React-based Liquity frontends",
   "keywords": [
@@ -21,7 +21,7 @@
     "prepare:tsc": "tsc --project tsconfig.dist.json"
   },
   "peerDependencies": {
-    "@liquity/lib-base": "^3.0.0",
+    "@u/lib-base-u": "^3.0.0",
     "react": "^16.13.1"
   },
   "devDependencies": {

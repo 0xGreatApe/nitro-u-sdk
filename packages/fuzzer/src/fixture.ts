@@ -9,9 +9,9 @@ import {
   TransactableLiquity,
   Trove,
   TroveAdjustmentParams
-} from "@liquity/lib-base";
+} from "@u/lib-base-u";
 
-import { EthersLiquity as Liquity } from "@liquity/lib-ethers";
+import { EthersLiquity as Liquity } from "@u/lib-ethers-u";
 
 import {
   createRandomTrove,

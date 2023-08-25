@@ -21,7 +21,7 @@ import {
   MINIMUM_BORROWING_RATE,
   LUSD_MINIMUM_DEBT,
   LUSD_MINIMUM_NET_DEBT
-} from "@liquity/lib-base";
+} from "@u/lib-base-u";
 
 import { HintHelpers } from "../types";
 
@@ -419,9 +419,8 @@ describe("EthersLiquity", () => {
 
   describe("Frontend", () => {
     it("should have no frontend initially", async () => {
-     // const frontend = await liquity.getFrontendStatus(await user.getAddress());
-
-     // assertStrictEqual(frontend.status, "unregistered" as const);
+      // const frontend = await liquity.getFrontendStatus(await user.getAddress());
+      // assertStrictEqual(frontend.status, "unregistered" as const);
     });
 
     it("should register a frontend", async () => {
@@ -429,10 +428,9 @@ describe("EthersLiquity", () => {
     });
 
     it("should have a frontend now", async () => {
-//const frontend = await liquity.getFrontendStatus(await user.getAddress());
-
-  //    assertStrictEqual(frontend.status, "registered" as const);
-   //   expect(`${frontend.kickbackRate}`).to.equal("0.75");
+      //const frontend = await liquity.getFrontendStatus(await user.getAddress());
+      //    assertStrictEqual(frontend.status, "registered" as const);
+      //   expect(`${frontend.kickbackRate}`).to.equal("0.75");
     });
 
     it("other user's deposit should be tagged with the frontend's address", async () => {
@@ -449,7 +447,7 @@ describe("EthersLiquity", () => {
       await otherLiquity.depositLUSDInStabilityPool(LUSD_MINIMUM_DEBT);
 
       const deposit = await otherLiquity.getStabilityDeposit();
-     // expect(deposit.frontendTag).to.equal(frontendTag);
+      // expect(deposit.frontendTag).to.equal(frontendTag);
     });
   });
 
@@ -547,8 +545,8 @@ describe("EthersLiquity", () => {
             .mul(0.995) // -0.5% gas compensation
             .mulDiv(smallStabilityDeposit, troveWithVeryLowICR.debt)
             .sub("0.000000000000000005"), // tiny imprecision
-          Decimal.ZERO,
-       //   AddressZero
+          Decimal.ZERO
+          //   AddressZero
         )
       );
     });

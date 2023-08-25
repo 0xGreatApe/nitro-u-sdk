@@ -1,4 +1,4 @@
-import { Decimal } from "@liquity/lib-base";
+import { Decimal } from "@u/lib-base-u";
 import React, { useEffect, useState } from "react";
 import { Flex, Button, Spinner, Label, Radio, Text } from "theme-ui";
 import { Amount } from "../../../ActionDescription";
@@ -236,4 +236,4 @@ export const WithdrawPane: React.FC = () => {
       </Flex>
     </>
   );
-};;
+};

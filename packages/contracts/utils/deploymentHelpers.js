@@ -46,7 +46,7 @@ const {
 	SortedTrovesProxy,
 	TokenProxy,
 	YOUStakingProxy,
-} = require("../utils/proxyHelpers.js")
+} = require("./proxyHelpers.js")
 
 /* "Liquity core" consists of all contracts in the core Liquity system.
 
@@ -463,3 +463,4 @@ class DeploymentHelper {
 	}
 }
 module.exports = DeploymentHelper
+

@@ -6,7 +6,7 @@ import {
   LUSD_MINIMUM_DEBT,
   Trove,
   TroveWithPendingRedistribution
-} from "@liquity/lib-base";
+} from "@u/lib-base-u";
 
 import { Fixture } from "../fixture";
 import { deployer, funder, provider, subgraph } from "../globals";

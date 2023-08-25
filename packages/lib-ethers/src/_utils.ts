@@ -1,6 +1,6 @@
 import { BigNumber } from "@ethersproject/bignumber";
 
-import { Decimal } from "@liquity/lib-base";
+import { Decimal } from "@u/lib-base-u";
 
 export const numberify = (bigNumber: BigNumber): number => bigNumber.toNumber();
 
@@ -14,7 +14,9 @@ export const panic = <T>(e: unknown): T => {
 export type Resolved<T> = T extends Promise<infer U> ? U : T;
 export type ResolvedValues<T> = { [P in keyof T]: Resolved<T[P]> };
 
-export const promiseAllValues = <T extends Record<string, unknown>>(object: T): Promise<ResolvedValues<T>> => {
+export const promiseAllValues = <T extends Record<string, unknown>>(
+  object: T
+): Promise<ResolvedValues<T>> => {
   const keys = Object.keys(object);
 
   return Promise.all(Object.values(object)).then(values =>

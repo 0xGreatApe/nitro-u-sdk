@@ -25,10 +25,10 @@ export interface LiquityStoreBaseState {
   lqtyBalance: Decimal;
 
   /** User's Uniswap ETH/LUSD LP token balance. */
- // uniTokenBalance: Decimal;
+  // uniTokenBalance: Decimal;
 
   /** The liquidity mining contract's allowance of user's Uniswap ETH/LUSD LP tokens. */
- // uniTokenAllowance: Decimal;
+  // uniTokenAllowance: Decimal;
 
   /** Remaining LQTY that will be collectively rewarded to liquidity miners. */
   remainingLiquidityMiningLQTYReward: Decimal;
@@ -187,7 +187,7 @@ const difference = <T>(a: T, b: T) =>
  * The type parameter `T` may be used to type extra state added to {@link LiquityStoreState} by the
  * subclass.
  *
- * Implemented by {@link @liquity/lib-ethers#BlockPolledLiquityStore}.
+ * Implemented by {@link @u/lib-ethers-u#BlockPolledLiquityStore}.
  *
  * @public
  */

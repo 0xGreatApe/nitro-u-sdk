@@ -1,5 +1,5 @@
 {
-	"name": "@liquity/contracts",
+	"name": "@u/contracts-u",
 	"version": "1.0.0",
 	"description": "",
 	"main": "hardhat.config.js",

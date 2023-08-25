@@ -1,5 +1,5 @@
-const { ZERO_ADDRESS } = require("@openzeppelin/test-helpers/src/constants")
-const { TestHelper: th } = require("../utils/testHelpers.js")
+const { ZERO_ADDRESS } = require("@openzeppelin/test-helpers/src/constants.js")
+const { TestHelper: th } = require("./testHelpers.js")
 
 const DSProxyFactory = artifacts.require("DSProxyFactory")
 const DSProxy = artifacts.require("DSProxy")
@@ -426,3 +426,4 @@ module.exports = {
 	TokenProxy,
 	YOUStakingProxy,
 }
+

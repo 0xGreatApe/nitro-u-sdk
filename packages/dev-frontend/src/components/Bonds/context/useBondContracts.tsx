@@ -1,4 +1,4 @@
-import { Decimal } from "@liquity/lib-base";
+import { Decimal } from "@u/lib-base-u";
 import {
   BLUSDLPZap,
   BLUSDLPZap__factory,
@@ -18,8 +18,8 @@ import {
   BondNFT__factory,
   ChickenBondManager__factory
 } from "@liquity/chicken-bonds/lusd/types";
-import type { UToken } from "@liquity/lib-ethers/dist/types";
-import UTokenAbi from "@liquity/lib-ethers/abi/UToken.json";
+import type { UToken } from "@u/lib-ethers-u/dist/types";
+import UTokenAbi from "@u/lib-ethers-u/abi/UToken.json";
 import { useContract } from "../../../hooks/useContract";
 import { useLiquity } from "../../../hooks/LiquityContext";
 import { useCallback } from "react";

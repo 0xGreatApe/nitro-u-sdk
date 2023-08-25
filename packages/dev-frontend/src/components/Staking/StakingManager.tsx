@@ -1,15 +1,9 @@
 import React from "react";
 import { Button, Flex } from "theme-ui";
 
-import {
-  Decimal,
-  Decimalish,
-  LiquityStoreState,
-  LQTYStake,
-  LQTYStakeChange
-} from "@liquity/lib-base";
+import { Decimal, Decimalish, LiquityStoreState, LQTYStake, LQTYStakeChange } from "@u/lib-base-u";
 
-import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "@liquity/lib-react";
+import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "@u/lib-react-u";
 
 import { GT, COIN } from "../../strings";
 

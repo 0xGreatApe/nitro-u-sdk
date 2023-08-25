@@ -13,7 +13,7 @@ import type {
   BLusdLpRewards
 } from "./transitions";
 import { PENDING_STATUS, CANCELLED_STATUS, CLAIMED_STATUS } from "../lexicon";
-import { Decimal } from "@liquity/lib-base";
+import { Decimal } from "@u/lib-base-u";
 
 export type BondViewContextType = {
   view: BondView;

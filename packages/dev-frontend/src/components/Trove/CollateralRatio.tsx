@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Box, Card } from "theme-ui";
 
-import { CRITICAL_COLLATERAL_RATIO, Decimal, Difference, Percent } from "@liquity/lib-base";
+import { CRITICAL_COLLATERAL_RATIO, Decimal, Difference, Percent } from "@u/lib-base-u";
 
 import { Icon } from "../Icon";
 

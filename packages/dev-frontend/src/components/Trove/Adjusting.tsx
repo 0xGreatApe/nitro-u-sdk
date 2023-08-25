@@ -7,8 +7,8 @@ import {
   LUSD_LIQUIDATION_RESERVE,
   Percent,
   Difference
-} from "@liquity/lib-base";
-import { useLiquitySelector } from "@liquity/lib-react";
+} from "@u/lib-base-u";
+import { useLiquitySelector } from "@u/lib-react-u";
 
 import { useStableTroveChange } from "../../hooks/useStableTroveChange";
 import { ActionDescription } from "../ActionDescription";
