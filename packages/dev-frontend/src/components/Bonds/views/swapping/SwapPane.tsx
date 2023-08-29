@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 
-import { Decimal, Percent } from "@u/lib-base-u";
+import { Decimal, Percent } from "lib-base-u";
 import React, { useEffect, useRef, useState } from "react";
 import { Flex, Button, Spinner, Heading, Close, Box, Label, Radio, Input, Link } from "theme-ui";
 import { Amount } from "../../../ActionDescription";

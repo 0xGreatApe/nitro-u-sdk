@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 
-import { Decimal, LUSD_MINIMUM_NET_DEBT, Trove } from "@u/lib-base-u";
+import { Decimal, LUSD_MINIMUM_NET_DEBT, Trove } from "lib-base-u";
 
 import App from "./App";
 

@@ -11,7 +11,7 @@ import { Claim } from "./actions/claim/Claim";
 import { Warning } from "../../../Warning";
 import { ReactModal } from "../../../ReactModal";
 import { percentify } from "../../utils";
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import { InfiniteEstimate } from "../InfiniteEstimation";
 
 export const Actioning: React.FC = () => {

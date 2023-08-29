@@ -5206,9 +5206,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@u/contracts-u@workspace:packages/contracts":
+"contracts-u@workspace:packages/contracts":
   version: 0.0.0-use.local
-  resolution: "@u/contracts-u@workspace:packages/contracts"
+  resolution: "contracts-u@workspace:packages/contracts"
   dependencies:
     "@chainlink/contracts": ^0.2.2
     "@layerzerolabs/lz-evm-sdk-v1-0.7": ^1.5.14
@@ -5244,9 +5244,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@u/lib-react-u@workspace:packages/lib-react":
+"lib-react-u@workspace:packages/lib-react":
   version: 0.0.0-use.local
-  resolution: "@u/lib-react-u@workspace:packages/lib-react"
+  resolution: "lib-react-u@workspace:packages/lib-react"
   dependencies:
     "@ethersproject/bignumber": 5.7.0
     "@types/react": 17.0.3
@@ -5259,14 +5259,14 @@ __metadata:
     react: 17.0.2
     typescript: 4.1.5
   peerDependencies:
-    "@u/lib-base-u": ^3.0.0
+    "lib-base-u": ^3.0.0
     react: ^16.13.1
   languageName: unknown
   linkType: soft
 
-"@u/lib-subgraph-u@workspace:packages/lib-subgraph":
+"lib-subgraph-u@workspace:packages/lib-subgraph":
   version: 0.0.0-use.local
-  resolution: "@u/lib-subgraph-u@workspace:packages/lib-subgraph"
+  resolution: "lib-subgraph-u@workspace:packages/lib-subgraph"
   dependencies:
     "@apollo/client": ^3.3.12
     "@ethersproject/address": ^5.4.0
@@ -5277,13 +5277,13 @@ __metadata:
     rimraf: ^3.0.2
     typescript: ~4.1.0
   peerDependencies:
-    "@u/lib-base-u": ^3.0.0
+    "lib-base-u": ^3.0.0
   languageName: unknown
   linkType: soft
 
-"@u/providers-u@workspace:packages/providers":
+"providers-u@workspace:packages/providers":
   version: 0.0.0-use.local
-  resolution: "@u/providers-u@workspace:packages/providers"
+  resolution: "providers-u@workspace:packages/providers"
   dependencies:
     ethers: ^5.4.3
     ts-node: ^9.1.1
@@ -5293,9 +5293,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@u/subgraph-u@workspace:packages/subgraph":
+"subgraph-u@workspace:packages/subgraph":
   version: 0.0.0-use.local
-  resolution: "@u/subgraph-u@workspace:packages/subgraph"
+  resolution: "subgraph-u@workspace:packages/subgraph"
   dependencies:
     "@graphprotocol/graph-cli": ^0.20.1
     "@graphprotocol/graph-ts": ^0.20.1
@@ -15393,7 +15393,7 @@ __metadata:
     typescript: 4.1.5
     ws: 7.4.6
   peerDependencies:
-    "@u/lib-base-u": ^3.0.0
+    "lib-base-u": ^3.0.0
     ethers: ^5.3.0
   languageName: unknown
   linkType: soft

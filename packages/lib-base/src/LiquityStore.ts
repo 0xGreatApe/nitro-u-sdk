@@ -187,7 +187,7 @@ const difference = <T>(a: T, b: T) =>
  * The type parameter `T` may be used to type extra state added to {@link LiquityStoreState} by the
  * subclass.
  *
- * Implemented by {@link @u/lib-ethers-u#BlockPolledLiquityStore}.
+ * Implemented by {@link lib-ethers-u#BlockPolledLiquityStore}.
  *
  * @public
  */

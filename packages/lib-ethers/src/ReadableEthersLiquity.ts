@@ -12,7 +12,7 @@ import {
   TroveWithPendingRedistribution,
   UserTrove,
   UserTroveStatus
-} from "@u/lib-base-u";
+} from "lib-base-u";
 
 import { MultiTroveGetter } from "../types";
 
@@ -80,7 +80,7 @@ const expectPositiveInt = <K extends string>(obj: { [P in K]?: number }, key: K)
 };
 
 /**
- * Ethers-based implementation of {@link @u/lib-base-u#ReadableLiquity}.
+ * Ethers-based implementation of {@link lib-base-u#ReadableLiquity}.
  *
  * @public
  */
@@ -149,7 +149,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return false;
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalRedistributed} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalRedistributed} */
   async getTotalRedistributed(overrides?: EthersCallOverrides): Promise<Trove> {
     const { troveManager } = _getContracts(this.connection);
 
@@ -161,7 +161,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return new Trove(collateral, debt);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTroveBeforeRedistribution} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTroveBeforeRedistribution} */
   async getTroveBeforeRedistribution(
     address?: string,
     overrides?: EthersCallOverrides
@@ -188,7 +188,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     }
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTrove} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTrove} */
   async getTrove(address?: string, overrides?: EthersCallOverrides): Promise<UserTrove> {
     const [trove, totalRedistributed] = await Promise.all([
       this.getTroveBeforeRedistribution(address, overrides),
@@ -198,7 +198,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return trove.applyRedistribution(totalRedistributed);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getNumberOfTroves} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getNumberOfTroves} */
   async getNumberOfTroves(overrides?: EthersCallOverrides): Promise<number> {
     const { troveManager } = _getContracts(this.connection);
     const _asset = await troveManager.wstETH();
@@ -206,7 +206,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return (await troveManager.getTroveOwnersCount(_asset, { ...overrides })).toNumber();
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getPrice} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getPrice} */
   async getPrice(overrides?: EthersCallOverrides): Promise<Decimal> {
     const { priceFeed } = _getContracts(this.connection);
     const { troveManager } = _getContracts(this.connection);
@@ -243,7 +243,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return new Trove(liquidatedCollateral, closedDebt);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotal} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotal} */
   async getTotal(overrides?: EthersCallOverrides): Promise<Trove> {
     const [activePool, defaultPool] = await Promise.all([
       this._getActivePool(overrides),
@@ -253,7 +253,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return activePool.add(defaultPool);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getStabilityDeposit} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getStabilityDeposit} */
   async getStabilityDeposit(
     address?: string,
     overrides?: EthersCallOverrides
@@ -276,7 +276,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     );
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getRemainingStabilityPoolLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getRemainingStabilityPoolLQTYReward} */
   async getRemainingStabilityPoolLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
     const { communityIssuance } = _getContracts(this.connection);
 
@@ -289,14 +289,14 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return issuanceCap.sub(totalYOUIssued);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLUSDInStabilityPool} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLUSDInStabilityPool} */
   getLUSDInStabilityPool(overrides?: EthersCallOverrides): Promise<Decimal> {
     const { stabilityPool } = _getContracts(this.connection);
 
     return stabilityPool.getTotalUDeposits({ ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLUSDBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLUSDBalance} */
   getLUSDBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     address ??= _requireAddress(this.connection);
     const { uToken } = _getContracts(this.connection);
@@ -304,7 +304,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return uToken.balanceOf(address, { ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLQTYBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLQTYBalance} */
   getLQTYBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     address ??= _requireAddress(this.connection);
     const { youToken } = _getContracts(this.connection);
@@ -312,7 +312,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return youToken.balanceOf(address, { ...overrides }).then(decimalify);
   }
 
-  // /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getUniTokenBalance} */
+  // /** {@inheritDoc lib-base-u#ReadableLiquity.getUniTokenBalance} */
   // getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
   //   address ??= _requireAddress(this.connection);
   //   const { uniToken } = _getContracts(this.connection);
@@ -320,7 +320,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
   //   return uniToken.balanceOf(address, { ...overrides }).then(decimalify);
   // }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getUniTokenAllowance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getUniTokenAllowance} */
   // getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
   //   address ??= _requireAddress(this.connection);
   //   const { uniToken, unipool } = _getContracts(this.connection);
@@ -347,7 +347,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
       );
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getRemainingLiquidityMiningLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getRemainingLiquidityMiningLQTYReward} */
   async getRemainingLiquidityMiningLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
     const [calculateRemainingLQTY, blockTimestamp] = await Promise.all([
       this._getRemainingLiquidityMiningLQTYRewardCalculator(overrides),
@@ -357,7 +357,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return calculateRemainingLQTY(blockTimestamp);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
   getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     address ??= _requireAddress(this.connection);
     const { unipool } = _getContracts(this.connection);
@@ -365,14 +365,14 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return unipool.balanceOf(address, { ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalStakedUniTokens} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalStakedUniTokens} */
   // getTotalStakedUniTokens(overrides?: EthersCallOverrides): Promise<Decimal> {
   //   const { unipool } = _getContracts(this.connection);
 
   //   return unipool.totalSupply({ ...overrides }).then(decimalify);
   // }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLiquidityMiningLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningLQTYReward} */
   getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     address ??= _requireAddress(this.connection);
     const { unipool } = _getContracts(this.connection);
@@ -380,7 +380,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return unipool.earned(address, { ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getCollateralSurplusBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getCollateralSurplusBalance} */
   async getCollateralSurplusBalance(
     address?: string,
     overrides?: EthersCallOverrides
@@ -397,7 +397,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     overrides?: EthersCallOverrides
   ): Promise<TroveWithPendingRedistribution[]>;
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.(getTroves:2)} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.(getTroves:2)} */
   getTroves(params: TroveListingParams, overrides?: EthersCallOverrides): Promise<UserTrove[]>;
 
   async getTroves(
@@ -466,7 +466,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
       );
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getFees} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getFees} */
   async getFees(overrides?: EthersCallOverrides): Promise<Fees> {
     const [createFees, total, price, blockTimestamp] = await Promise.all([
       this._getFeesFactory(overrides),
@@ -478,7 +478,7 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return createFees(blockTimestamp, total.collateralRatioIsBelowCritical(price));
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLQTYStake} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLQTYStake} */
   async getLQTYStake(address?: string, overrides?: EthersCallOverrides): Promise<LQTYStake> {
     address ??= _requireAddress(this.connection);
     const { youStaking } = _getContracts(this.connection);
@@ -495,14 +495,14 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     return new LQTYStake(stakedLQTY, collateralGain, lusdGain);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalStakedLQTY} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalStakedLQTY} */
   async getTotalStakedLQTY(overrides?: EthersCallOverrides): Promise<Decimal> {
     const { youStaking } = _getContracts(this.connection);
 
     return youStaking.totalYOUStaked({ ...overrides }).then(decimalify);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getFrontendStatus} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getFrontendStatus} */
   // async getFrontendStatus(
   //   address?: string,
   //   overrides?: EthersCallOverrides
@@ -535,7 +535,7 @@ const mapBackendTroves = (troves: BackendTroves): TroveWithPendingRedistribution
   );
 
 /**
- * Variant of {@link ReadableEthersLiquity} that exposes a {@link @u/lib-base-u#LiquityStore}.
+ * Variant of {@link ReadableEthersLiquity} that exposes a {@link lib-base-u#LiquityStore}.
  *
  * @public
  */

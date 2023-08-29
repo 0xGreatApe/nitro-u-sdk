@@ -1,4 +1,4 @@
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import { BigNumber } from "ethers";
 import { lambertW0 } from "lambert-w-function";
 

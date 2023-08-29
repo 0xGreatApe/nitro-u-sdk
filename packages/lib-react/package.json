@@ -1,19 +1,19 @@
 {
-  "name": "@u/lib-react-u",
+  "name": "lib-react-u",
   "version": "0.0.0-semantic-release",
-  "description": "Components and hooks for React-based Liquity frontends",
+  "description": "U Protocol SDK Ethers-based implementation",
   "keywords": [
-    "Liquity",
+    "U-Protocol",
     "protocol",
     "DeFi",
     "Ethereum"
   ],
-  "homepage": "https://github.com/liquity/liquity#readme",
+  "homepage": "https://github.com/0xGreatApe/nitro-u-sdk",
   "license": "MIT",
-  "author": "Daniel Simon <dani@liquity.org>",
+  "author": "0xGreatApe <0xGreatApe@gmail.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/liquity/dev",
+  "repository": "https://github.com/0xGreatApe/nitro-u-sdk",
   "scripts": {
     "eslint": "eslint",
     "prepare": "run-s 'prepare:*'",
@@ -21,7 +21,7 @@
     "prepare:tsc": "tsc --project tsconfig.dist.json"
   },
   "peerDependencies": {
-    "@u/lib-base-u": "^3.0.0",
+    "lib-base-u": "^3.0.0",
     "react": "^16.13.1"
   },
   "devDependencies": {

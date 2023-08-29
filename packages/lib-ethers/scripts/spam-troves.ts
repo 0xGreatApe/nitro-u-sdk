@@ -3,8 +3,8 @@ import { TransactionResponse } from "@ethersproject/abstract-provider";
 import { JsonRpcProvider } from "@ethersproject/providers";
 import { Wallet } from "@ethersproject/wallet";
 
-import { Decimal, LUSD_MINIMUM_DEBT, Trove } from "@u/lib-base-u";
-import { EthersLiquity, EthersLiquityWithStore, BlockPolledLiquityStore } from "@u/lib-ethers-u";
+import { Decimal, LUSD_MINIMUM_DEBT, Trove } from "lib-base-u";
+import { EthersLiquity, EthersLiquityWithStore, BlockPolledLiquityStore } from "lib-ethers-u";
 
 import {
   Batched,

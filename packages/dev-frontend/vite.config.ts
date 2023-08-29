@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [react()],
   define: { "process.env": {} }, // Coinbase SDK wants this
   optimizeDeps: {
-    include: ["@liquity/providers", "@u/lib-ethers-u", "@u/lib-base-u", "@u/lib-react-u"],
+    include: ["@liquity/providers", "lib-ethers-u", "lib-base-u", "lib-react-u"],
     esbuildOptions: {
       plugins: [NodeModulesPolyfillPlugin()]
     }

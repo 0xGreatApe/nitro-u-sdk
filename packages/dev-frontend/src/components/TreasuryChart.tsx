@@ -1,4 +1,4 @@
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import { PieChart, Pie, ResponsiveContainer, Tooltip, Cell } from "recharts";
 import { useBondView } from "./Bonds/context/BondViewContext";
 

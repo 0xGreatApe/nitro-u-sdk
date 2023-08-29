@@ -8,7 +8,7 @@ import {
   EthersLiquity,
   EthersLiquityWithStore,
   _connectByChainId
-} from "@u/lib-ethers-u";
+} from "lib-ethers-u";
 
 import { LiquityFrontendConfig, getConfig } from "../config";
 import { BatchedProvider } from "../providers/BatchingProvider";

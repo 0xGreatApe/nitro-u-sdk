@@ -4,7 +4,7 @@ import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import { Contract, CallOverrides, EventFilter } from "@ethersproject/contracts";
 import { AlchemyProvider } from "@ethersproject/providers";
 
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 
 const outputFile = "eth-usd.csv";
 

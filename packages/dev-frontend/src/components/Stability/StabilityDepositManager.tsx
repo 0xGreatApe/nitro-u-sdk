@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from "react";
 import { Button, Flex } from "theme-ui";
 
-import { Decimal, Decimalish, LiquityStoreState } from "@u/lib-base-u";
-import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "@u/lib-react-u";
+import { Decimal, Decimalish, LiquityStoreState } from "lib-base-u";
+import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "lib-react-u";
 
 import { COIN } from "../../strings";
 

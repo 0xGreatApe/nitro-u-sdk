@@ -48,7 +48,7 @@ export interface TroveListingParams {
  * Read the state of the Liquity protocol.
  *
  * @remarks
- * Implemented by {@link @u/lib-ethers-u#EthersLiquity}.
+ * Implemented by {@link lib-ethers-u#EthersLiquity}.
  *
  * @public
  */
@@ -57,7 +57,7 @@ export interface ReadableLiquity {
    * Get the total collateral and debt per stake that has been liquidated through redistribution.
    *
    * @remarks
-   * Needed when dealing with instances of {@link @u/lib-base-u#TroveWithPendingRedistribution}.
+   * Needed when dealing with instances of {@link lib-base-u#TroveWithPendingRedistribution}.
    */
   getTotalRedistributed(): Promise<Trove>;
 
@@ -68,7 +68,7 @@ export interface ReadableLiquity {
    *
    * @remarks
    * The current state of a Trove can be fetched using
-   * {@link @u/lib-base-u#ReadableLiquity.getTrove | getTrove()}.
+   * {@link lib-base-u#ReadableLiquity.getTrove | getTrove()}.
    */
   getTroveBeforeRedistribution(address?: string): Promise<TroveWithPendingRedistribution>;
 
@@ -170,7 +170,7 @@ export interface ReadableLiquity {
    * When a Trove gets liquidated or redeemed, any collateral it has above 110% (in case of
    * liquidation) or 100% collateralization (in case of redemption) gets sent to a pool, where it
    * can be withdrawn from using
-   * {@link @u/lib-base-u#TransactableLiquity.claimCollateralSurplus | claimCollateralSurplus()}.
+   * {@link lib-base-u#TransactableLiquity.claimCollateralSurplus | claimCollateralSurplus()}.
    */
   getCollateralSurplusBalance(address?: string): Promise<Decimal>;
 

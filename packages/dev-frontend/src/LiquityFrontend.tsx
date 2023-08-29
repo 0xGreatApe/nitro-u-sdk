@@ -3,8 +3,8 @@ import { Flex, Container } from "theme-ui";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Wallet } from "@ethersproject/wallet";
 
-import { Decimal, Difference, Trove } from "@u/lib-base-u";
-import { LiquityStoreProvider } from "@u/lib-react-u";
+import { Decimal, Difference, Trove } from "lib-base-u";
+import { LiquityStoreProvider } from "lib-react-u";
 
 import { useLiquity } from "./hooks/LiquityContext";
 import { TransactionMonitor } from "./components/Transaction";

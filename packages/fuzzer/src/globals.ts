@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import { Wallet } from "@ethersproject/wallet";
 import { JsonRpcProvider } from "@ethersproject/providers";
 
-import { SubgraphLiquity } from "@u/lib-subgraph-u";
+import { SubgraphLiquity } from "lib-subgraph-u";
 
 dotenv.config();
 

@@ -21,7 +21,7 @@ import {
   MINIMUM_BORROWING_RATE,
   LUSD_MINIMUM_DEBT,
   LUSD_MINIMUM_NET_DEBT
-} from "@u/lib-base-u";
+} from "lib-base-u";
 
 import { HintHelpers } from "../types";
 

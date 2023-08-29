@@ -17,7 +17,7 @@ import type {
 } from "./transitions";
 import { BLusdAmmTokenIndex } from "./transitions";
 import { transitions } from "./transitions";
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import { useLiquity } from "../../../hooks/LiquityContext";
 import { api, _getProtocolInfo } from "./api";
 import { useTransaction } from "../../../hooks/useTransaction";

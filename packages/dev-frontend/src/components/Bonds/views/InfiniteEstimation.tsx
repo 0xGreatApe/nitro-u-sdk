@@ -1,4 +1,4 @@
-import { Decimal, Decimalish } from "@u/lib-base-u";
+import { Decimal, Decimalish } from "lib-base-u";
 import { InfoIcon } from "../../InfoIcon";
 import * as l from "../lexicon";
 

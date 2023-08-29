@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { LiquityStoreState, LQTYStake } from "@u/lib-base-u";
-import { LiquityStoreUpdate, useLiquityReducer } from "@u/lib-react-u";
+import { LiquityStoreState, LQTYStake } from "lib-base-u";
+import { LiquityStoreUpdate, useLiquityReducer } from "lib-react-u";
 
 import { useMyTransactionState } from "../../Transaction";
 

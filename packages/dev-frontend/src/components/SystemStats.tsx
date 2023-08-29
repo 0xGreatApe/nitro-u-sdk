@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Heading, Link, Box, Text } from "theme-ui";
 import { AddressZero } from "@ethersproject/constants";
-import { Decimal, Percent, LiquityStoreState } from "@u/lib-base-u";
-import { useLiquitySelector } from "@u/lib-react-u";
+import { Decimal, Percent, LiquityStoreState } from "lib-base-u";
+import { useLiquitySelector } from "lib-react-u";
 
 import { useLiquity } from "../hooks/LiquityContext";
 import { Statistic } from "./Statistic";

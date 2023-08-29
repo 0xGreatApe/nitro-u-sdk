@@ -1,4 +1,4 @@
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import { Text, Box, Flex } from "theme-ui";
 import { StaticRow, StaticAmounts } from "../../../Trove/Editor";
 import { useBondView } from "../../context/BondViewContext";

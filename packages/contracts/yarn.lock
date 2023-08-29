@@ -2155,9 +2155,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@u/contracts-u@workspace:.":
+"contracts-u@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@u/contracts-u@workspace:."
+  resolution: "contracts-u@workspace:."
   dependencies:
     "@chainlink/contracts": ^0.2.2
     "@layerzerolabs/lz-evm-sdk-v1-0.7": ^1.5.14

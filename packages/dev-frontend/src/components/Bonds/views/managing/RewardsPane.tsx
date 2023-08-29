@@ -1,4 +1,4 @@
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 import React from "react";
 import { Flex, Button, Spinner } from "theme-ui";
 import { StaticRow, StaticAmounts } from "../../../Trove/Editor";

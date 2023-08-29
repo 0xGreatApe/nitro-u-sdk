@@ -17,7 +17,7 @@ import {
  * A transaction that has already been sent.
  *
  * @remarks
- * Implemented by {@link @u/lib-ethers-u#SentEthersLiquityTransaction}.
+ * Implemented by {@link lib-ethers-u#SentEthersLiquityTransaction}.
  *
  * @public
  */
@@ -29,7 +29,7 @@ export interface SentLiquityTransaction<S = unknown, T extends LiquityReceipt = 
    * Check whether the transaction has been mined, and whether it was successful.
    *
    * @remarks
-   * Unlike {@link @u/lib-base-u#SentLiquityTransaction.waitForReceipt | waitForReceipt()},
+   * Unlike {@link lib-base-u#SentLiquityTransaction.waitForReceipt | waitForReceipt()},
    * this function doesn't wait for the transaction to be mined.
    */
   getReceipt(): Promise<T>;
@@ -37,8 +37,8 @@ export interface SentLiquityTransaction<S = unknown, T extends LiquityReceipt = 
   /**
    * Wait for the transaction to be mined, and check whether it was successful.
    *
-   * @returns Either a {@link @u/lib-base-u#FailedReceipt} or a
-   *          {@link @u/lib-base-u#SuccessfulReceipt}.
+   * @returns Either a {@link lib-base-u#FailedReceipt} or a
+   *          {@link lib-base-u#SuccessfulReceipt}.
    */
   waitForReceipt(): Promise<Extract<T, MinedReceipt>>;
 }
@@ -136,7 +136,7 @@ export type _SendableFrom<T, R, S> = {
  * The functions return an object implementing {@link SentLiquityTransaction}, which can be used
  * to monitor the transaction and get its details when it succeeds.
  *
- * Implemented by {@link @u/lib-ethers-u#SendableEthersLiquity}.
+ * Implemented by {@link lib-ethers-u#SendableEthersLiquity}.
  *
  * @public
  */

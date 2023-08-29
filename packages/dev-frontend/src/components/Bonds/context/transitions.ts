@@ -1,4 +1,4 @@
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 
 type Idle = "IDLE";
 type Creating = "CREATING";

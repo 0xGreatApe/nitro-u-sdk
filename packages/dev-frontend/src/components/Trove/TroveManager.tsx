@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from "react";
 import { Flex, Button } from "theme-ui";
 
-import { LiquityStoreState, Decimal, Trove, Decimalish, LUSD_MINIMUM_DEBT } from "@u/lib-base-u";
+import { LiquityStoreState, Decimal, Trove, Decimalish, LUSD_MINIMUM_DEBT } from "lib-base-u";
 
-import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "@u/lib-react-u";
+import { LiquityStoreUpdate, useLiquityReducer, useLiquitySelector } from "lib-react-u";
 
 import { ActionDescription } from "../ActionDescription";
 import { useMyTransactionState } from "../Transaction";

@@ -1,7 +1,7 @@
 import { Heading, Box, Card, Flex, Button } from "theme-ui";
 
-import { LiquityStoreState } from "@u/lib-base-u";
-import { useLiquitySelector } from "@u/lib-react-u";
+import { LiquityStoreState } from "lib-base-u";
+import { useLiquitySelector } from "lib-react-u";
 
 import { COIN, GT } from "../../strings";
 

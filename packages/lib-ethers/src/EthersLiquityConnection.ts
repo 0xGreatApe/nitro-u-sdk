@@ -1,7 +1,7 @@
 import { Block, BlockTag } from "@ethersproject/abstract-provider";
 import { Signer } from "@ethersproject/abstract-signer";
 
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 
 import devOrNull from "../deployments/dev.json";
 import goerli from "../deployments/goerli.json";
@@ -274,7 +274,7 @@ export interface EthersLiquityConnectionOptionalParams {
   readonly frontendTag?: string;
 
   /**
-   * Create a {@link @u/lib-base-u#LiquityStore} and expose it as the `store` property.
+   * Create a {@link lib-base-u#LiquityStore} and expose it as the `store` property.
    *
    * @remarks
    * When set to one of the available {@link EthersLiquityStoreOption | options},
@@ -284,7 +284,7 @@ export interface EthersLiquityConnectionOptionalParams {
    * {@link EthersLiquityWithStore}.
    *
    * Note that the store won't start monitoring the blockchain until its
-   * {@link @u/lib-base-u#LiquityStore.start | start()} function is called.
+   * {@link lib-base-u#LiquityStore.start | start()} function is called.
    */
   readonly useStore?: EthersLiquityStoreOption;
 }

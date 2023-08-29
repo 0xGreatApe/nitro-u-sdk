@@ -2,7 +2,7 @@ import { hexlify } from "@ethersproject/bytes";
 import { Wallet } from "@ethersproject/wallet";
 import { signTypedData, SignTypedDataVersion } from "@metamask/eth-sig-util";
 
-import { Decimal, Decimalish } from "@u/lib-base-u";
+import { Decimal, Decimalish } from "lib-base-u";
 
 export class DisposableWalletProvider {
   private readonly url: string;

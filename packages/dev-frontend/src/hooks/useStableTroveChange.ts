@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Decimal, TroveChange } from "@u/lib-base-u";
+import { Decimal, TroveChange } from "lib-base-u";
 
 type ValidTroveChange = Exclude<TroveChange<Decimal>, { type: "invalidCreation" }>;
 

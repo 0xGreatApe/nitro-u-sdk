@@ -1,8 +1,8 @@
-# @u/lib-base-u
+# lib-base-u
 
 Shared interfaces and classes of the Liquity SDK.
 
-Needs to be installed in order to use other Liquity SDK packages, for example [@u/lib-ethers-u](https://www.npmjs.com/package/@u/lib-ethers-u).
+Needs to be installed in order to use other Liquity SDK packages, for example [lib-ethers-u](https://www.npmjs.com/package/lib-ethers-u).
 
 ## API Reference
 

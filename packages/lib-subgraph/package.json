@@ -1,5 +1,5 @@
 {
-  "name": "@u/lib-subgraph-u",
+  "name": "lib-subgraph-u",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "prepare": "tsc --project tsconfig.dist.json"
   },
   "peerDependencies": {
-    "@u/lib-base-u": "^3.0.0"
+    "lib-base-u": "^3.0.0"
   },
   "devDependencies": {
     "apollo": "^2.30.3",

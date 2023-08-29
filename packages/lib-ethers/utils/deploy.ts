@@ -2,7 +2,7 @@ import { Signer } from "@ethersproject/abstract-signer";
 import { ContractTransaction, ContractFactory, Overrides } from "@ethersproject/contracts";
 import { Wallet } from "@ethersproject/wallet";
 
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 
 import {
   _LiquityContractAddresses,

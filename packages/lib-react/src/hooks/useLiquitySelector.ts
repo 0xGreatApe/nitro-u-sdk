@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 
-import { LiquityStoreState } from "@u/lib-base-u";
+import { LiquityStoreState } from "lib-base-u";
 
 import { equals } from "../utils/equals";
 import { useLiquityStore } from "./useLiquityStore";

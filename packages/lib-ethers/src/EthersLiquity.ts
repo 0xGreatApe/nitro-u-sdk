@@ -25,7 +25,7 @@ import {
   TroveListingParams,
   TroveWithPendingRedistribution,
   UserTrove
-} from "@u/lib-base-u";
+} from "lib-base-u";
 
 import {
   EthersLiquityConnection,
@@ -157,12 +157,12 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     return false;
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalRedistributed} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalRedistributed} */
   getTotalRedistributed(overrides?: EthersCallOverrides): Promise<Trove> {
     return this._readable.getTotalRedistributed(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTroveBeforeRedistribution} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTroveBeforeRedistribution} */
   getTroveBeforeRedistribution(
     address?: string,
     overrides?: EthersCallOverrides
@@ -170,17 +170,17 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     return this._readable.getTroveBeforeRedistribution(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTrove} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTrove} */
   getTrove(address?: string, overrides?: EthersCallOverrides): Promise<UserTrove> {
     return this._readable.getTrove(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getNumberOfTroves} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getNumberOfTroves} */
   getNumberOfTroves(overrides?: EthersCallOverrides): Promise<number> {
     return this._readable.getNumberOfTroves(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getPrice} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getPrice} */
   getPrice(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getPrice(overrides);
   }
@@ -195,42 +195,42 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     return this._readable._getDefaultPool(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotal} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotal} */
   getTotal(overrides?: EthersCallOverrides): Promise<Trove> {
     return this._readable.getTotal(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getStabilityDeposit} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getStabilityDeposit} */
   getStabilityDeposit(address?: string, overrides?: EthersCallOverrides): Promise<StabilityDeposit> {
     return this._readable.getStabilityDeposit(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getRemainingStabilityPoolLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getRemainingStabilityPoolLQTYReward} */
   getRemainingStabilityPoolLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getRemainingStabilityPoolLQTYReward(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLUSDInStabilityPool} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLUSDInStabilityPool} */
   getLUSDInStabilityPool(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getLUSDInStabilityPool(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLUSDBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLUSDBalance} */
   getLUSDBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getLUSDBalance(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLQTYBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLQTYBalance} */
   getLQTYBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getLQTYBalance(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getUniTokenBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getUniTokenBalance} */
   // getUniTokenBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
   //   return this._readable.getUniTokenBalance(address, overrides);
   // }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getUniTokenAllowance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getUniTokenAllowance} */
   // getUniTokenAllowance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
   //   return this._readable.getUniTokenAllowance(address, overrides);
   // }
@@ -242,27 +242,27 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     return this._readable._getRemainingLiquidityMiningLQTYRewardCalculator(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getRemainingLiquidityMiningLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getRemainingLiquidityMiningLQTYReward} */
   getRemainingLiquidityMiningLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getRemainingLiquidityMiningLQTYReward(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
   getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getLiquidityMiningStake(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalStakedUniTokens} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalStakedUniTokens} */
   // getTotalStakedUniTokens(overrides?: EthersCallOverrides): Promise<Decimal> {
   //   return this._readable.getTotalStakedUniTokens(overrides);
   // }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLiquidityMiningLQTYReward} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningLQTYReward} */
   getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getLiquidityMiningLQTYReward(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getCollateralSurplusBalance} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getCollateralSurplusBalance} */
   getCollateralSurplusBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getCollateralSurplusBalance(address, overrides);
   }
@@ -273,7 +273,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     overrides?: EthersCallOverrides
   ): Promise<TroveWithPendingRedistribution[]>;
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.(getTroves:2)} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.(getTroves:2)} */
   getTroves(params: TroveListingParams, overrides?: EthersCallOverrides): Promise<UserTrove[]>;
 
   getTroves(params: TroveListingParams, overrides?: EthersCallOverrides): Promise<UserTrove[]> {
@@ -292,28 +292,28 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     return this._readable._getFeesFactory(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getFees} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getFees} */
   getFees(overrides?: EthersCallOverrides): Promise<Fees> {
     return this._readable.getFees(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getLQTYStake} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getLQTYStake} */
   getLQTYStake(address?: string, overrides?: EthersCallOverrides): Promise<LQTYStake> {
     return this._readable.getLQTYStake(address, overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getTotalStakedLQTY} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalStakedLQTY} */
   getTotalStakedLQTY(overrides?: EthersCallOverrides): Promise<Decimal> {
     return this._readable.getTotalStakedLQTY(overrides);
   }
 
-  /** {@inheritDoc @u/lib-base-u#ReadableLiquity.getFrontendStatus} */
+  /** {@inheritDoc lib-base-u#ReadableLiquity.getFrontendStatus} */
   // getFrontendStatus(address?: string, overrides?: EthersCallOverrides): Promise<FrontendStatus> {
   //   return this._readable.getFrontendStatus(address, overrides);
   // }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.openTrove}
+   * {@inheritDoc lib-base-u#TransactableLiquity.openTrove}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -330,7 +330,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.closeTrove}
+   * {@inheritDoc lib-base-u#TransactableLiquity.closeTrove}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -341,7 +341,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.adjustTrove}
+   * {@inheritDoc lib-base-u#TransactableLiquity.adjustTrove}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -358,7 +358,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.depositCollateral}
+   * {@inheritDoc lib-base-u#TransactableLiquity.depositCollateral}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -372,7 +372,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.withdrawCollateral}
+   * {@inheritDoc lib-base-u#TransactableLiquity.withdrawCollateral}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -386,7 +386,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.borrowLUSD}
+   * {@inheritDoc lib-base-u#TransactableLiquity.borrowLUSD}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -401,7 +401,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.repayLUSD}
+   * {@inheritDoc lib-base-u#TransactableLiquity.repayLUSD}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -420,7 +420,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.liquidate}
+   * {@inheritDoc lib-base-u#TransactableLiquity.liquidate}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -434,7 +434,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.liquidateUpTo}
+   * {@inheritDoc lib-base-u#TransactableLiquity.liquidateUpTo}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -448,7 +448,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.depositLUSDInStabilityPool}
+   * {@inheritDoc lib-base-u#TransactableLiquity.depositLUSDInStabilityPool}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -463,7 +463,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.withdrawLUSDFromStabilityPool}
+   * {@inheritDoc lib-base-u#TransactableLiquity.withdrawLUSDFromStabilityPool}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -477,7 +477,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.withdrawGainsFromStabilityPool}
+   * {@inheritDoc lib-base-u#TransactableLiquity.withdrawGainsFromStabilityPool}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -490,7 +490,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.transferCollateralGainToTrove}
+   * {@inheritDoc lib-base-u#TransactableLiquity.transferCollateralGainToTrove}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -503,7 +503,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.sendLUSD}
+   * {@inheritDoc lib-base-u#TransactableLiquity.sendLUSD}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -518,7 +518,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.sendLQTY}
+   * {@inheritDoc lib-base-u#TransactableLiquity.sendLQTY}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -533,7 +533,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.redeemLUSD}
+   * {@inheritDoc lib-base-u#TransactableLiquity.redeemLUSD}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -548,7 +548,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.claimCollateralSurplus}
+   * {@inheritDoc lib-base-u#TransactableLiquity.claimCollateralSurplus}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -559,7 +559,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.stakeLQTY}
+   * {@inheritDoc lib-base-u#TransactableLiquity.stakeLQTY}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -570,7 +570,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.unstakeLQTY}
+   * {@inheritDoc lib-base-u#TransactableLiquity.unstakeLQTY}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -581,7 +581,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.withdrawGainsFromStaking}
+   * {@inheritDoc lib-base-u#TransactableLiquity.withdrawGainsFromStaking}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -592,7 +592,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.registerFrontend}
+   * {@inheritDoc lib-base-u#TransactableLiquity.registerFrontend}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -612,7 +612,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.approveUniTokens}
+   * {@inheritDoc lib-base-u#TransactableLiquity.approveUniTokens}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -623,7 +623,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   // }
 
   // /**
-  //  * {@inheritDoc @u/lib-base-u#TransactableLiquity.stakeUniTokens}
+  //  * {@inheritDoc lib-base-u#TransactableLiquity.stakeUniTokens}
   //  *
   //  * @throws
   //  * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -634,7 +634,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   // }
 
   // /**
-  //  * {@inheritDoc @u/lib-base-u#TransactableLiquity.unstakeUniTokens}
+  //  * {@inheritDoc lib-base-u#TransactableLiquity.unstakeUniTokens}
   //  *
   //  * @throws
   //  * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -645,7 +645,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   // }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.withdrawLQTYRewardFromLiquidityMining}
+   * {@inheritDoc lib-base-u#TransactableLiquity.withdrawLQTYRewardFromLiquidityMining}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -656,7 +656,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   }
 
   /**
-   * {@inheritDoc @u/lib-base-u#TransactableLiquity.exitLiquidityMining}
+   * {@inheritDoc lib-base-u#TransactableLiquity.exitLiquidityMining}
    *
    * @throws
    * Throws {@link EthersTransactionFailedError} in case of transaction failure.
@@ -668,7 +668,7 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
 }
 
 /**
- * Variant of {@link EthersLiquity} that exposes a {@link @u/lib-base-u#LiquityStore}.
+ * Variant of {@link EthersLiquity} that exposes a {@link lib-base-u#LiquityStore}.
  *
  * @public
  */

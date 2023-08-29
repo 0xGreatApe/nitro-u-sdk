@@ -1,6 +1,6 @@
 import { BigNumber } from "@ethersproject/bignumber";
 
-import { Decimal } from "@u/lib-base-u";
+import { Decimal } from "lib-base-u";
 
 export const numberify = (bigNumber: BigNumber): number => bigNumber.toNumber();
 

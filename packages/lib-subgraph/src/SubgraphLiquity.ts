@@ -14,7 +14,7 @@ import {
   TroveWithPendingRedistribution,
   UserTrove,
   _emptyTrove
-} from "@u/lib-base-u";
+} from "lib-base-u";
 
 import { OrderDirection } from "../types/globalTypes";
 import { Global } from "../types/Global";

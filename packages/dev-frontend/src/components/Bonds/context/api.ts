@@ -27,8 +27,8 @@ import type {
   BondClaimedEventObject,
   BondClaimedEvent
 } from "@liquity/chicken-bonds/lusd/types/ChickenBondManager";
-import { Decimal } from "@u/lib-base-u";
-import type { UToken } from "@u/lib-ethers-u/dist/types";
+import { Decimal } from "lib-base-u";
+import type { UToken } from "lib-ethers-u/dist/types";
 import type { ProtocolInfo, Bond, BondStatus, Stats, Maybe, BLusdLpRewards } from "./transitions";
 import {
   numberify,
