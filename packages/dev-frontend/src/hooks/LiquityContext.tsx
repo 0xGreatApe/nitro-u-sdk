@@ -46,6 +46,7 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
       // batchedProvider._debugLog = true;
 
       try {
+        console.log("chainId inside useMemo", chainId);
         return _connectByChainId(batchedProvider, signer.data, chainId, {
           userAddress: account.address,
           frontendTag: config.frontendTag,

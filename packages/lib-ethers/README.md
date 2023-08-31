@@ -1,6 +1,6 @@
 # lib-ethers-u
 
-[Ethers](https://www.npmjs.com/package/ethers)-based library for reading Liquity protocol state and sending transactions.
+[Ethers](https://www.npmjs.com/package/ethers)-based library for reading U protocol state and sending transactions.
 
 ## Quickstart
 
@@ -33,8 +33,7 @@ async function example() {
 ## More examples
 
 See [packages/examples](https://github.com/liquity/liquity/tree/master/packages/examples) in the repo.
-
-Liquity's [Dev UI](https://github.com/liquity/liquity/tree/master/packages/dev-frontend) itself contains many examples of `lib-ethers-u` use.
+ 
 
 ## API Reference
 

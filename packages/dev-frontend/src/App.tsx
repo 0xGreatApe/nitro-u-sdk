@@ -4,7 +4,7 @@ import { mainnet, goerli, arbitrum, arbitrumGoerli, localhost } from "wagmi/chai
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { Flex, Heading, ThemeProvider, Paragraph, Link } from "theme-ui";
 
-// import { BatchedWebSocketAugmentedWeb3Provider } from "@liquity/providers";
+// import { BatchedWebSocketAugmentedWeb3Provider } from "providers";
 import { LiquityProvider } from "./hooks/LiquityContext";
 import { WalletConnector } from "./components/WalletConnector";
 import { TransactionProvider } from "./components/Transaction";
