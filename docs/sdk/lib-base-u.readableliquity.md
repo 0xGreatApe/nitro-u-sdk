@@ -22,7 +22,6 @@ Implemented by [EthersLiquity](./lib-ethers-u.ethersliquity.md)<!-- -->.
 |  --- | --- |
 |  [getCollateralSurplusBalance(address)](./lib-base-u.readableliquity.getcollateralsurplusbalance.md) | Get the amount of leftover collateral available for withdrawal by an address. |
 |  [getFees()](./lib-base-u.readableliquity.getfees.md) | Get a calculator for current fees. |
-|  [getLiquidityMiningLQTYReward(address)](./lib-base-u.readableliquity.getliquiditymininglqtyreward.md) | Get the amount of LQTY earned by an address through mining liquidity. |
 |  [getLiquidityMiningStake(address)](./lib-base-u.readableliquity.getliquidityminingstake.md) | Get the amount of Uniswap ETH/LUSD LP tokens currently staked by an address in liquidity mining. |
 |  [getLQTYBalance(address)](./lib-base-u.readableliquity.getlqtybalance.md) | Get the amount of LQTY held by an address. |
 |  [getLQTYStake(address)](./lib-base-u.readableliquity.getlqtystake.md) | Get the current state of an LQTY Stake. |
@@ -30,8 +29,6 @@ Implemented by [EthersLiquity](./lib-ethers-u.ethersliquity.md)<!-- -->.
 |  [getLUSDInStabilityPool()](./lib-base-u.readableliquity.getlusdinstabilitypool.md) | Get the total amount of LUSD currently deposited in the Stability Pool. |
 |  [getNumberOfTroves()](./lib-base-u.readableliquity.getnumberoftroves.md) | Get number of Troves that are currently open. |
 |  [getPrice()](./lib-base-u.readableliquity.getprice.md) | Get the current price of the native currency (e.g. Ether) in USD. |
-|  [getRemainingLiquidityMiningLQTYReward()](./lib-base-u.readableliquity.getremainingliquiditymininglqtyreward.md) | Get the remaining LQTY that will be collectively rewarded to liquidity miners. |
-|  [getRemainingStabilityPoolLQTYReward()](./lib-base-u.readableliquity.getremainingstabilitypoollqtyreward.md) | Get the remaining LQTY that will be collectively rewarded to stability depositors. |
 |  [getStabilityDeposit(address)](./lib-base-u.readableliquity.getstabilitydeposit.md) | Get the current state of a Stability Deposit. |
 |  [getTotal()](./lib-base-u.readableliquity.gettotal.md) | Get the total amount of collateral and debt in the Liquity system. |
 |  [getTotalRedistributed()](./lib-base-u.readableliquity.gettotalredistributed.md) | Get the total collateral and debt per stake that has been liquidated through redistribution. |

@@ -18,7 +18,6 @@ export interface LiquityStoreBaseState
 |  --- | --- | --- |
 |  [accountBalance](./lib-base-u.liquitystorebasestate.accountbalance.md) | [Decimal](./lib-base-u.decimal.md) | User's native currency balance (e.g. Ether). |
 |  [collateralSurplusBalance](./lib-base-u.liquitystorebasestate.collateralsurplusbalance.md) | [Decimal](./lib-base-u.decimal.md) | Amount of leftover collateral available for withdrawal to the user. |
-|  [liquidityMiningLQTYReward](./lib-base-u.liquitystorebasestate.liquiditymininglqtyreward.md) | [Decimal](./lib-base-u.decimal.md) | Amount of LQTY the user has earned through mining liquidity. |
 |  [liquidityMiningStake](./lib-base-u.liquitystorebasestate.liquidityminingstake.md) | [Decimal](./lib-base-u.decimal.md) | Amount of Uniswap ETH/LUSD LP tokens the user has staked in liquidity mining. |
 |  [lqtyBalance](./lib-base-u.liquitystorebasestate.lqtybalance.md) | [Decimal](./lib-base-u.decimal.md) | User's LQTY token balance. |
 |  [lqtyStake](./lib-base-u.liquitystorebasestate.lqtystake.md) | [LQTYStake](./lib-base-u.lqtystake.md) | User's LQTY stake. |
@@ -26,7 +25,6 @@ export interface LiquityStoreBaseState
 |  [lusdInStabilityPool](./lib-base-u.liquitystorebasestate.lusdinstabilitypool.md) | [Decimal](./lib-base-u.decimal.md) | Total amount of LUSD currently deposited in the Stability Pool. |
 |  [numberOfTroves](./lib-base-u.liquitystorebasestate.numberoftroves.md) | number | Number of Troves that are currently open. |
 |  [price](./lib-base-u.liquitystorebasestate.price.md) | [Decimal](./lib-base-u.decimal.md) | Current price of the native currency (e.g. Ether) in USD. |
-|  [remainingLiquidityMiningLQTYReward](./lib-base-u.liquitystorebasestate.remainingliquiditymininglqtyreward.md) | [Decimal](./lib-base-u.decimal.md) | Remaining LQTY that will be collectively rewarded to liquidity miners. |
 |  [remainingStabilityPoolLQTYReward](./lib-base-u.liquitystorebasestate.remainingstabilitypoollqtyreward.md) | [Decimal](./lib-base-u.decimal.md) | Remaining LQTY that will be collectively rewarded to stability depositors. |
 |  [stabilityDeposit](./lib-base-u.liquitystorebasestate.stabilitydeposit.md) | [StabilityDeposit](./lib-base-u.stabilitydeposit.md) | User's stability deposit. |
 |  [total](./lib-base-u.liquitystorebasestate.total.md) | [Trove](./lib-base-u.trove.md) | Total collateral and debt in the Liquity system. |

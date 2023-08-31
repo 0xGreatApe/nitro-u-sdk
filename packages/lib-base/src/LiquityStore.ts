@@ -31,7 +31,7 @@ export interface LiquityStoreBaseState {
   // uniTokenAllowance: Decimal;
 
   /** Remaining LQTY that will be collectively rewarded to liquidity miners. */
-  remainingLiquidityMiningLQTYReward: Decimal;
+  // remainingLiquidityMiningLQTYReward: Decimal;
 
   /** Amount of Uniswap ETH/LUSD LP tokens the user has staked in liquidity mining. */
   liquidityMiningStake: Decimal;
@@ -40,7 +40,7 @@ export interface LiquityStoreBaseState {
   // totalStakedUniTokens: Decimal;
 
   /** Amount of LQTY the user has earned through mining liquidity. */
-  liquidityMiningLQTYReward: Decimal;
+  //liquidityMiningLQTYReward: Decimal;
 
   /**
    * Amount of leftover collateral available for withdrawal to the user.
@@ -347,11 +347,11 @@ export abstract class LiquityStore<T = unknown> {
       //   baseStateUpdate.uniTokenAllowance
       // ),
 
-      remainingLiquidityMiningLQTYReward: this._silentlyUpdateIfChanged(
-        eq,
-        baseState.remainingLiquidityMiningLQTYReward,
-        baseStateUpdate.remainingLiquidityMiningLQTYReward
-      ),
+      // remainingLiquidityMiningLQTYReward: this._silentlyUpdateIfChanged(
+      //   eq,
+      //   baseState.remainingLiquidityMiningLQTYReward,
+      //   baseStateUpdate.remainingLiquidityMiningLQTYReward
+      // ),
 
       liquidityMiningStake: this._updateIfChanged(
         eq,
@@ -367,11 +367,11 @@ export abstract class LiquityStore<T = unknown> {
       //   baseStateUpdate.totalStakedUniTokens
       // ),
 
-      liquidityMiningLQTYReward: this._silentlyUpdateIfChanged(
-        eq,
-        baseState.liquidityMiningLQTYReward,
-        baseStateUpdate.liquidityMiningLQTYReward
-      ),
+      // liquidityMiningLQTYReward: this._silentlyUpdateIfChanged(
+      //   eq,
+      //   baseState.liquidityMiningLQTYReward,
+      //   baseStateUpdate.liquidityMiningLQTYReward
+      // ),
 
       collateralSurplusBalance: this._updateIfChanged(
         eq,

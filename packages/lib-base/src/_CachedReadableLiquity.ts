@@ -101,12 +101,12 @@ export class _CachedReadableLiquity<T extends unknown[]>
     );
   }
 
-  async getRemainingStabilityPoolLQTYReward(...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getRemainingStabilityPoolLQTYReward(...extraParams) ??
-      this._readable.getRemainingStabilityPoolLQTYReward(...extraParams)
-    );
-  }
+  // async getRemainingStabilityPoolLQTYReward(...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getRemainingStabilityPoolLQTYReward(...extraParams) ??
+  //     this._readable.getRemainingStabilityPoolLQTYReward(...extraParams)
+  //   );
+  // }
 
   async getLUSDInStabilityPool(...extraParams: T): Promise<Decimal> {
     return (
@@ -143,12 +143,12 @@ export class _CachedReadableLiquity<T extends unknown[]>
   //   );
   // }
 
-  async getRemainingLiquidityMiningLQTYReward(...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getRemainingLiquidityMiningLQTYReward(...extraParams) ??
-      this._readable.getRemainingLiquidityMiningLQTYReward(...extraParams)
-    );
-  }
+  // async getRemainingLiquidityMiningLQTYReward(...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getRemainingLiquidityMiningLQTYReward(...extraParams) ??
+  //     this._readable.getRemainingLiquidityMiningLQTYReward(...extraParams)
+  //   );
+  // }
 
   async getLiquidityMiningStake(address?: string, ...extraParams: T): Promise<Decimal> {
     return (
@@ -164,12 +164,12 @@ export class _CachedReadableLiquity<T extends unknown[]>
   //   );
   // }
 
-  async getLiquidityMiningLQTYReward(address?: string, ...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getLiquidityMiningLQTYReward(address, ...extraParams) ??
-      this._readable.getLiquidityMiningLQTYReward(address, ...extraParams)
-    );
-  }
+  // async getLiquidityMiningLQTYReward(address?: string, ...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getLiquidityMiningLQTYReward(address, ...extraParams) ??
+  //     this._readable.getLiquidityMiningLQTYReward(address, ...extraParams)
+  //   );
+  // }
 
   async getCollateralSurplusBalance(address?: string, ...extraParams: T): Promise<Decimal> {
     return (

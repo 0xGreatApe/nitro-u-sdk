@@ -236,16 +236,16 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   // }
 
   /** @internal */
-  _getRemainingLiquidityMiningLQTYRewardCalculator(
-    overrides?: EthersCallOverrides
-  ): Promise<(blockTimestamp: number) => Decimal> {
-    return this._readable._getRemainingLiquidityMiningLQTYRewardCalculator(overrides);
-  }
+  // _getRemainingLiquidityMiningLQTYRewardCalculator(
+  //   overrides?: EthersCallOverrides
+  // ): Promise<(blockTimestamp: number) => Decimal> {
+  //   return this._readable._getRemainingLiquidityMiningLQTYRewardCalculator(overrides);
+  // }
 
   /** {@inheritDoc lib-base-u#ReadableLiquity.getRemainingLiquidityMiningLQTYReward} */
-  getRemainingLiquidityMiningLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
-    return this._readable.getRemainingLiquidityMiningLQTYReward(overrides);
-  }
+  // getRemainingLiquidityMiningLQTYReward(overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   return this._readable.getRemainingLiquidityMiningLQTYReward(overrides);
+  // }
 
   /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
   getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
@@ -258,9 +258,9 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   // }
 
   /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningLQTYReward} */
-  getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    return this._readable.getLiquidityMiningLQTYReward(address, overrides);
-  }
+  // getLiquidityMiningLQTYReward(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   return this._readable.getLiquidityMiningLQTYReward(address, overrides);
+  // }
 
   /** {@inheritDoc lib-base-u#ReadableLiquity.getCollateralSurplusBalance} */
   getCollateralSurplusBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {

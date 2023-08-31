@@ -92,14 +92,14 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
     const {
       blockTimestamp,
       _feesFactory,
-      calculateRemainingLQTY,
+      // calculateRemainingLQTY,
       ...baseState
     } = await promiseAllValues({
       blockTimestamp: this._readable._getBlockTimestamp(blockTag),
       _feesFactory: this._readable._getFeesFactory({ blockTag }),
-      calculateRemainingLQTY: this._readable._getRemainingLiquidityMiningLQTYRewardCalculator({
-        blockTag
-      }),
+      // calculateRemainingLQTY: this._readable._getRemainingLiquidityMiningLQTYRewardCalculator({
+      //   blockTag
+      // }),
 
       price: this._readable.getPrice({ blockTag }),
       numberOfTroves: this._readable.getNumberOfTroves({ blockTag }),
@@ -125,9 +125,9 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
             //    uniTokenBalance: this._readable.getUniTokenBalance(userAddress, { blockTag }),
             //    uniTokenAllowance: this._readable.getUniTokenAllowance(userAddress, { blockTag }),
             liquidityMiningStake: this._readable.getLiquidityMiningStake(userAddress, { blockTag }),
-            liquidityMiningLQTYReward: this._readable.getLiquidityMiningLQTYReward(userAddress, {
-              blockTag
-            }),
+            // liquidityMiningLQTYReward: this._readable.getLiquidityMiningLQTYReward(userAddress, {
+            //   blockTag
+            // }),
             collateralSurplusBalance: this._readable.getCollateralSurplusBalance(userAddress, {
               blockTag
             }),
@@ -166,8 +166,8 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
     return [
       {
         ...baseState,
-        _feesInNormalMode: _feesFactory(blockTimestamp, false),
-        remainingLiquidityMiningLQTYReward: calculateRemainingLQTY(blockTimestamp)
+        _feesInNormalMode: _feesFactory(blockTimestamp, false)
+        // remainingLiquidityMiningLQTYReward: calculateRemainingLQTY(blockTimestamp)
       },
       {
         blockTag,

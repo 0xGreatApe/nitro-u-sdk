@@ -39,7 +39,6 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [exitLiquidityMining(overrides)](./lib-ethers-u.ethersliquity.exitliquiditymining.md) |  | Withdraw all staked LP tokens from liquidity mining and claim reward. |
 |  [getCollateralSurplusBalance(address, overrides)](./lib-ethers-u.ethersliquity.getcollateralsurplusbalance.md) |  | Get the amount of leftover collateral available for withdrawal by an address. |
 |  [getFees(overrides)](./lib-ethers-u.ethersliquity.getfees.md) |  | Get a calculator for current fees. |
-|  [getLiquidityMiningLQTYReward(address, overrides)](./lib-ethers-u.ethersliquity.getliquiditymininglqtyreward.md) |  | Get the amount of LQTY earned by an address through mining liquidity. |
 |  [getLiquidityMiningStake(address, overrides)](./lib-ethers-u.ethersliquity.getliquidityminingstake.md) |  | Get the amount of Uniswap ETH/LUSD LP tokens currently staked by an address in liquidity mining. |
 |  [getLQTYBalance(address, overrides)](./lib-ethers-u.ethersliquity.getlqtybalance.md) |  | Get the amount of LQTY held by an address. |
 |  [getLQTYStake(address, overrides)](./lib-ethers-u.ethersliquity.getlqtystake.md) |  | Get the current state of an LQTY Stake. |
@@ -47,8 +46,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [getLUSDInStabilityPool(overrides)](./lib-ethers-u.ethersliquity.getlusdinstabilitypool.md) |  | Get the total amount of LUSD currently deposited in the Stability Pool. |
 |  [getNumberOfTroves(overrides)](./lib-ethers-u.ethersliquity.getnumberoftroves.md) |  | Get number of Troves that are currently open. |
 |  [getPrice(overrides)](./lib-ethers-u.ethersliquity.getprice.md) |  | Get the current price of the native currency (e.g. Ether) in USD. |
-|  [getRemainingLiquidityMiningLQTYReward(overrides)](./lib-ethers-u.ethersliquity.getremainingliquiditymininglqtyreward.md) |  | Get the remaining LQTY that will be collectively rewarded to liquidity miners. |
-|  [getRemainingStabilityPoolLQTYReward(overrides)](./lib-ethers-u.ethersliquity.getremainingstabilitypoollqtyreward.md) |  | Get the remaining LQTY that will be collectively rewarded to stability depositors. |
+|  [getRemainingStabilityPoolLQTYReward(overrides)](./lib-ethers-u.ethersliquity.getremainingstabilitypoollqtyreward.md) |  |  |
 |  [getStabilityDeposit(address, overrides)](./lib-ethers-u.ethersliquity.getstabilitydeposit.md) |  | Get the current state of a Stability Deposit. |
 |  [getTotal(overrides)](./lib-ethers-u.ethersliquity.gettotal.md) |  | Get the total amount of collateral and debt in the Liquity system. |
 |  [getTotalRedistributed(overrides)](./lib-ethers-u.ethersliquity.gettotalredistributed.md) |  | Get the total collateral and debt per stake that has been liquidated through redistribution. |
