@@ -124,7 +124,7 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
             lqtyBalance: this._readable.getLQTYBalance(userAddress, { blockTag }),
             //    uniTokenBalance: this._readable.getUniTokenBalance(userAddress, { blockTag }),
             //    uniTokenAllowance: this._readable.getUniTokenAllowance(userAddress, { blockTag }),
-            liquidityMiningStake: this._readable.getLiquidityMiningStake(userAddress, { blockTag }),
+            // liquidityMiningStake: this._readable.getLiquidityMiningStake(userAddress, { blockTag }),
             // liquidityMiningLQTYReward: this._readable.getLiquidityMiningLQTYReward(userAddress, {
             //   blockTag
             // }),
@@ -144,7 +144,7 @@ export class BlockPolledLiquityStore extends LiquityStore<BlockPolledLiquityStor
             lqtyBalance: Decimal.ZERO,
             uniTokenBalance: Decimal.ZERO,
             uniTokenAllowance: Decimal.ZERO,
-            liquidityMiningStake: Decimal.ZERO,
+            // liquidityMiningStake: Decimal.ZERO,
             liquidityMiningLQTYReward: Decimal.ZERO,
             collateralSurplusBalance: Decimal.ZERO,
             troveBeforeRedistribution: new TroveWithPendingRedistribution(

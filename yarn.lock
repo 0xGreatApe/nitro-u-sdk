@@ -8594,13 +8594,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concat-stream@github:hugomrdias/concat-stream#feat/smaller":
+"concat-stream@github:maxogden/concat-stream":
   version: 2.0.0
-  resolution: "concat-stream@https://github.com/hugomrdias/concat-stream.git#commit=057bc7b5d6d8df26c8cf00a3f151b6721a0a8034"
+  resolution: "concat-stream@https://github.com/maxogden/concat-stream.git#commit=ceaa101bd2e19c5878a98dd6cb875108f49bf5c5"
   dependencies:
+    buffer-from: ^1.0.0
     inherits: ^2.0.3
     readable-stream: ^3.0.2
-  checksum: 1cef636e7061f310088706b34fe774e3960dff60a5039158b5e5c84795f6dd8a3411659324280405b8c5f1d7e8e3d4f68fa48e55963ed14953a44fef66423329
+    typedarray: ^0.0.6
+  checksum: 61e916482db26897907a6497affd4469a5275cc05fde5b30477ef61c89eb5630df1aa9a6b2e7d06cd3d775290c49b61181ef35b7a70d0ac56025c3c67e8b6ca0
   languageName: node
   linkType: hard
 
@@ -13900,7 +13902,7 @@ __metadata:
     bs58: ^4.0.1
     buffer: ^5.4.2
     cids: ~0.7.1
-    concat-stream: "github:hugomrdias/concat-stream#feat/smaller"
+    concat-stream: "github:maxogden/concat-stream"
     debug: ^4.1.0
     detect-node: ^2.0.4
     end-of-stream: ^1.4.1

@@ -39,7 +39,6 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [exitLiquidityMining(overrides)](./lib-ethers-u.ethersliquity.exitliquiditymining.md) |  | Withdraw all staked LP tokens from liquidity mining and claim reward. |
 |  [getCollateralSurplusBalance(address, overrides)](./lib-ethers-u.ethersliquity.getcollateralsurplusbalance.md) |  | Get the amount of leftover collateral available for withdrawal by an address. |
 |  [getFees(overrides)](./lib-ethers-u.ethersliquity.getfees.md) |  | Get a calculator for current fees. |
-|  [getLiquidityMiningStake(address, overrides)](./lib-ethers-u.ethersliquity.getliquidityminingstake.md) |  | Get the amount of Uniswap ETH/LUSD LP tokens currently staked by an address in liquidity mining. |
 |  [getLQTYBalance(address, overrides)](./lib-ethers-u.ethersliquity.getlqtybalance.md) |  | Get the amount of LQTY held by an address. |
 |  [getLQTYStake(address, overrides)](./lib-ethers-u.ethersliquity.getlqtystake.md) |  | Get the current state of an LQTY Stake. |
 |  [getLUSDBalance(address, overrides)](./lib-ethers-u.ethersliquity.getlusdbalance.md) |  | Get the amount of LUSD held by an address. |

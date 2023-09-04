@@ -22,7 +22,6 @@ Implemented by [EthersLiquity](./lib-ethers-u.ethersliquity.md)<!-- -->.
 |  --- | --- |
 |  [getCollateralSurplusBalance(address)](./lib-base-u.readableliquity.getcollateralsurplusbalance.md) | Get the amount of leftover collateral available for withdrawal by an address. |
 |  [getFees()](./lib-base-u.readableliquity.getfees.md) | Get a calculator for current fees. |
-|  [getLiquidityMiningStake(address)](./lib-base-u.readableliquity.getliquidityminingstake.md) | Get the amount of Uniswap ETH/LUSD LP tokens currently staked by an address in liquidity mining. |
 |  [getLQTYBalance(address)](./lib-base-u.readableliquity.getlqtybalance.md) | Get the amount of LQTY held by an address. |
 |  [getLQTYStake(address)](./lib-base-u.readableliquity.getlqtystake.md) | Get the current state of an LQTY Stake. |
 |  [getLUSDBalance(address)](./lib-base-u.readableliquity.getlusdbalance.md) | Get the amount of LUSD held by an address. |

@@ -247,10 +247,10 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
   //   return this._readable.getRemainingLiquidityMiningLQTYReward(overrides);
   // }
 
-  /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
-  getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
-    return this._readable.getLiquidityMiningStake(address, overrides);
-  }
+  // /** {@inheritDoc lib-base-u#ReadableLiquity.getLiquidityMiningStake} */
+  // getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal> {
+  //   return this._readable.getLiquidityMiningStake(address, overrides);
+  // }
 
   /** {@inheritDoc lib-base-u#ReadableLiquity.getTotalStakedUniTokens} */
   // getTotalStakedUniTokens(overrides?: EthersCallOverrides): Promise<Decimal> {

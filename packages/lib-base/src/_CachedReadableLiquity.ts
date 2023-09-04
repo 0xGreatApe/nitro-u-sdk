@@ -150,12 +150,12 @@ export class _CachedReadableLiquity<T extends unknown[]>
   //   );
   // }
 
-  async getLiquidityMiningStake(address?: string, ...extraParams: T): Promise<Decimal> {
-    return (
-      this._cache.getLiquidityMiningStake(address, ...extraParams) ??
-      this._readable.getLiquidityMiningStake(address, ...extraParams)
-    );
-  }
+  // async getLiquidityMiningStake(address?: string, ...extraParams: T): Promise<Decimal> {
+  //   return (
+  //     this._cache.getLiquidityMiningStake(address, ...extraParams) ??
+  //     this._readable.getLiquidityMiningStake(address, ...extraParams)
+  //   );
+  // }
 
   // async getTotalStakedUniTokens(...extraParams: T): Promise<Decimal> {
   //   return (

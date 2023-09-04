@@ -133,8 +133,6 @@ export class EthersLiquity implements ReadableEthersLiquity, TransactableLiquity
     // @internal (undocumented)
     _getFeesFactory(overrides?: EthersCallOverrides): Promise<(blockTimestamp: number, recoveryMode: boolean) => Fees>;
     // (undocumented)
-    getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
-    // (undocumented)
     getLQTYBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
     // (undocumented)
     getLQTYStake(address?: string, overrides?: EthersCallOverrides): Promise<LQTYStake>;
@@ -439,8 +437,6 @@ export class ReadableEthersLiquity implements ReadableLiquity {
     getFees(overrides?: EthersCallOverrides): Promise<Fees>;
     // @internal (undocumented)
     _getFeesFactory(overrides?: EthersCallOverrides): Promise<(blockTimestamp: number, recoveryMode: boolean) => Fees>;
-    // (undocumented)
-    getLiquidityMiningStake(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
     // (undocumented)
     getLQTYBalance(address?: string, overrides?: EthersCallOverrides): Promise<Decimal>;
     // (undocumented)

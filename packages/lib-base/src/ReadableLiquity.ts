@@ -149,7 +149,7 @@ export interface ReadableLiquity {
    *
    * @param address - Address whose LP stake should be retrieved.
    */
-  getLiquidityMiningStake(address?: string): Promise<Decimal>;
+  //getLiquidityMiningStake(address?: string): Promise<Decimal>;
 
   /**
    * Get the total amount of Uniswap ETH/LUSD LP tokens currently staked in liquidity mining.

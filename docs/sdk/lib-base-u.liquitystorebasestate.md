@@ -18,7 +18,6 @@ export interface LiquityStoreBaseState
 |  --- | --- | --- |
 |  [accountBalance](./lib-base-u.liquitystorebasestate.accountbalance.md) | [Decimal](./lib-base-u.decimal.md) | User's native currency balance (e.g. Ether). |
 |  [collateralSurplusBalance](./lib-base-u.liquitystorebasestate.collateralsurplusbalance.md) | [Decimal](./lib-base-u.decimal.md) | Amount of leftover collateral available for withdrawal to the user. |
-|  [liquidityMiningStake](./lib-base-u.liquitystorebasestate.liquidityminingstake.md) | [Decimal](./lib-base-u.decimal.md) | Amount of Uniswap ETH/LUSD LP tokens the user has staked in liquidity mining. |
 |  [lqtyBalance](./lib-base-u.liquitystorebasestate.lqtybalance.md) | [Decimal](./lib-base-u.decimal.md) | User's LQTY token balance. |
 |  [lqtyStake](./lib-base-u.liquitystorebasestate.lqtystake.md) | [LQTYStake](./lib-base-u.lqtystake.md) | User's LQTY stake. |
 |  [lusdBalance](./lib-base-u.liquitystorebasestate.lusdbalance.md) | [Decimal](./lib-base-u.decimal.md) | User's LUSD token balance. |

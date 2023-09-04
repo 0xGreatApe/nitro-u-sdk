@@ -30,7 +30,6 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [connect(signerOrProvider, optionalParams)](./lib-ethers-u.readableethersliquity.connect_1.md) | <code>static</code> |  |
 |  [getCollateralSurplusBalance(address, overrides)](./lib-ethers-u.readableethersliquity.getcollateralsurplusbalance.md) |  | Get the amount of leftover collateral available for withdrawal by an address. |
 |  [getFees(overrides)](./lib-ethers-u.readableethersliquity.getfees.md) |  | Get a calculator for current fees. |
-|  [getLiquidityMiningStake(address, overrides)](./lib-ethers-u.readableethersliquity.getliquidityminingstake.md) |  | Get the amount of Uniswap ETH/LUSD LP tokens currently staked by an address in liquidity mining. |
 |  [getLQTYBalance(address, overrides)](./lib-ethers-u.readableethersliquity.getlqtybalance.md) |  | Get the amount of LQTY held by an address. |
 |  [getLQTYStake(address, overrides)](./lib-ethers-u.readableethersliquity.getlqtystake.md) |  | Get the current state of an LQTY Stake. |
 |  [getLUSDBalance(address, overrides)](./lib-ethers-u.readableethersliquity.getlusdbalance.md) |  | Get the amount of LUSD held by an address. |

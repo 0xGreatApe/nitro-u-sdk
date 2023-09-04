@@ -34,7 +34,7 @@ export interface LiquityStoreBaseState {
   // remainingLiquidityMiningLQTYReward: Decimal;
 
   /** Amount of Uniswap ETH/LUSD LP tokens the user has staked in liquidity mining. */
-  liquidityMiningStake: Decimal;
+  //liquidityMiningStake: Decimal;
 
   /** Total amount of Uniswap ETH/LUSD LP tokens currently staked in liquidity mining. */
   // totalStakedUniTokens: Decimal;
@@ -353,12 +353,12 @@ export abstract class LiquityStore<T = unknown> {
       //   baseStateUpdate.remainingLiquidityMiningLQTYReward
       // ),
 
-      liquidityMiningStake: this._updateIfChanged(
-        eq,
-        "liquidityMiningStake",
-        baseState.liquidityMiningStake,
-        baseStateUpdate.liquidityMiningStake
-      ),
+      // liquidityMiningStake: this._updateIfChanged(
+      //   eq,
+      //   "liquidityMiningStake",
+      //   baseState.liquidityMiningStake,
+      //   baseStateUpdate.liquidityMiningStake
+      // ),
 
       // totalStakedUniTokens: this._updateIfChanged(
       //   eq,
